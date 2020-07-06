@@ -1,0 +1,15 @@
+body {
+  background-color: #5d6d7e;
+  font-family: Noto Sans, sans-serif; /*Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif; */
+  /* "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    sans-serif; */
+}
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 20px;
+  top: 10px;
+  right: 20px;
+}
