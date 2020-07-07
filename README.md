@@ -1,5 +1,5 @@
-# Simple React Weather App
-A simple React app that displays the weather information based on the inputted city name. It consumes data from OpenWeatherMap and uses `https://datahub.io/core/country-list` to convert country code based on 2 digit codes (ISO 3166-1) into their full name.
+# Gloom Blue
+A simple Weather app created using React.JS that displays the weather information based on the inputted city name. It consumes data from OpenWeatherMap and uses `https://datahub.io/core/country-list` to convert country code based on 2 digit codes (ISO 3166-1) into their full name.
 
 ## Instructions
 
