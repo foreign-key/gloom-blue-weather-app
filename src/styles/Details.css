@@ -20,6 +20,14 @@ table.borderless th {
   border: none !important;
 }
 
+.td-title {
+  font-weight: bold;
+}
+
+.td-value {
+  text-align: right;
+}
+
 .weatherMain {
   padding: 10px;
 }
@@ -29,7 +37,6 @@ hr {
 }
 
 h1 {
-  /* font-weight: bold; */
   color: #f4f6f6;
 }
 
@@ -51,4 +58,6 @@ h5 {
   height: 50vh;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: -1;
+  margin-bottom: 20px;
 }

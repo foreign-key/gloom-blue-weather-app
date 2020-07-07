@@ -1,0 +1,58 @@
+/* Custom, iPhone Retina */
+@media only screen and (min-width: 320px) {
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 480px) {
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px) {
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px) {
+}
+
+/*==========  Non-Mobile First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width: 1200px) {
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width: 992px) {
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width: 768px) {
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px) {
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 320px) {
+}
+
+body {
+  font-family: Noto Sans, sans-serif;
+  background: #154360;
+  background: -webkit-linear-gradient(to right, #154360, #283747);
+  background: linear-gradient(to right, #154360, #283747);
+  min-height: 100%;
+  margin-bottom: 40px;
+}
+.weatherBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 10px;
+  right: 10px;
+}

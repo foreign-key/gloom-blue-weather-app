@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import "./styles/index.css";
 import Weather from "../src/components/Weather";
 
 var destination = document.querySelector("#weatherBody");

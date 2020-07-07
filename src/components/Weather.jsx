@@ -4,6 +4,7 @@ import SearchInput from "./SearchInput";
 import Details from "./Details";
 import Container from "react-bootstrap/Container";
 import GeoLocation from "./GeoLocation";
+import Footer from "./Footer";
 
 var xhr;
 
@@ -88,18 +89,21 @@ class Weather extends Component {
 
   render() {
     return (
-      <Container>
-        <SearchInput
-          searchHandler={this.searchLocation}
-          tempChangeHandler={this.tempChangeHandler}
-        />
+      <React.Fragment>
+        <Container>
+          <SearchInput
+            searchHandler={this.searchLocation}
+            tempChangeHandler={this.tempChangeHandler}
+          />
 
-        <Details {...this.state} geoClicked={this.geoClickHandler} />
-        <GeoLocation
-          isMapVisible={this.state.isMapVisible}
-          coordinates={this.state.coordinates}
-        />
-      </Container>
+          <Details {...this.state} geoClicked={this.geoClickHandler} />
+          <GeoLocation
+            isMapVisible={this.state.isMapVisible}
+            coordinates={this.state.coordinates}
+          />
+        </Container>
+        <Footer />
+      </React.Fragment>
     );
   }
 }

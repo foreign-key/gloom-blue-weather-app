@@ -92,16 +92,18 @@ class Details extends Component {
               <table className="table table-borderless">
                 <tbody>
                   <tr>
-                    <td>Wind</td>
-                    <td>{props.result.wind.speed} m/s</td>
+                    <td className="td-title">Wind</td>
+                    <td className="td-value">{props.result.wind.speed} m/s</td>
                   </tr>
                   <tr>
-                    <td>Pressure</td>
-                    <td>{props.result.main.pressure} hPa</td>
+                    <td className="td-title">Pressure</td>
+                    <td className="td-value">
+                      {props.result.main.pressure} hPa
+                    </td>
                   </tr>
                   <tr>
-                    <td>Humidity</td>
-                    <td>{props.result.main.humidity} %</td>
+                    <td className="td-title">Humidity</td>
+                    <td className="td-value">{props.result.main.humidity} %</td>
                   </tr>
                 </tbody>
               </table>

@@ -1,4 +1,6 @@
 import React, { PureComponent } from "react";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { Map, TileLayer, Marker } from "react-leaflet";
 
 import "../styles/Details.css";
@@ -16,22 +18,29 @@ class Geolocation extends PureComponent {
 
       return (
         props.isMapVisible && (
-          <div className="resultMain">
-            <Map
-              center={[this.props.coordinates.lat, this.props.coordinates.lon]}
-              zoom={15}
-            >
-              <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              />
-              <Marker
-                position={[
-                  this.props.coordinates.lat,
-                  this.props.coordinates.lon,
-                ]}
-              />
-            </Map>
+          <div>
+            <Row>
+              <Col xs={12} md={12} lg={12} xl={12}>
+                <Map
+                  center={[
+                    this.props.coordinates.lat,
+                    this.props.coordinates.lon,
+                  ]}
+                  zoom={15}
+                >
+                  <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                  />
+                  <Marker
+                    position={[
+                      this.props.coordinates.lat,
+                      this.props.coordinates.lon,
+                    ]}
+                  />
+                </Map>
+              </Col>
+            </Row>
           </div>
         )
       );
