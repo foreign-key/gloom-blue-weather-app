@@ -1,0 +1,93 @@
+.searchInput input {
+  border: 1px solid #fff;
+  margin-top: 20px;
+  border-radius: 20px;
+  border-color: #808080;
+  outline: none;
+  background-color: #d5d8dc;
+  /* width: auto; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  padding-left: 2.375rem;
+}
+.searchInput .search-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #3498db;
+}
+
+.switch {
+  position: absolute;
+  margin-top: 19.5px;
+  right: 0;
+  margin-right: 20px;
+  border-radius: 20rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.switch-on,
+.switch-off {
+  border-radius: 20rem;
+}
+.switch .switch-handle {
+  border-radius: 20rem;
+}
+
+/* .searchInput button {
+  margin-top: 20px;
+  margin-left: 10px;
+  background-color: #1a5276;
+  color: #f2f3f4;
+  border: 2px solid #c0c0c0;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.searchInput button:hover {
+  background-color: #1f618d;
+  border: 2px solid #fef9e7;
+  cursor: pointer;
+}
+.searchInput button:focus {
+  outline: none;
+}
+
+body {
+  background: #ffd89b;
+  background: -webkit-linear-gradient(to right, #ffd89b, #19547b);
+  background: linear-gradient(to right, #ffd89b, #19547b);
+  min-height: 100vh;
+}
+
+.form-control::placeholder {
+  font-size: 0.95rem;
+  color: #aaa;
+  font-style: italic;
+} */
+
+/* .searchMain {
+  width: 70%;
+} */
+
+/* Bootstrap 4 text input with search icon */
+
+/* .has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+} */

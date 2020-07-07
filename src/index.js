@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Weather from "./Weather/Weather";
+import Weather from "../src/components/Weather";
 
-var destination = document.querySelector("#container");
+var destination = document.querySelector("#weatherBody");
 
 ReactDOM.render(
-  <div>
+  <React.Fragment>
     <Weather />
-  </div>,
+  </React.Fragment>,
   destination
 );

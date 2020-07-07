@@ -14,6 +14,6 @@ A simple React app that displays the weather information based on the inputted c
 + Currently, it just supports searching by city name.
 
 ## Future Updates
-+ Integrate maps based on the geo coordinates fetched from the server
-+ Make some changes on the UI
+~~ Integrate maps based on the geo coordinates fetched from the server ~~
+~~ Make some changes on the UI ~~
 + 7-day forecast

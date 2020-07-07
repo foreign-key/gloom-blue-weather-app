@@ -1,0 +1,54 @@
+.resultMain {
+  background-color: #1a5276;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 20px;
+  color: #99a3a4;
+}
+
+.weatherMain .table {
+  margin: -10px;
+  color: #99a3a4;
+  font-size: 16px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+table.borderless td,
+table.borderless th {
+  border: none !important;
+}
+
+.weatherMain {
+  padding: 10px;
+}
+
+hr {
+  border-top: 1px solid #797d7f;
+}
+
+h1 {
+  /* font-weight: bold; */
+  color: #f4f6f6;
+}
+
+h5 {
+  color: #f4f6f6;
+}
+
+.btn-link {
+  color: #3498db;
+  margin: -10px;
+}
+
+.btn-link:hover {
+  color: #85c1e9;
+}
+
+.geoLocationMain .leaflet-container {
+  width: 100%;
+  height: 50vh;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
