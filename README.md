@@ -6,9 +6,9 @@ A simple Weather app created using React.JS that displays the weather informatio
 
 ## Instructions
 
-1. Navigate to [repo](https://github.com/foreign-key/react-weather-app)
+1. Navigate to [repo](https://github.com/foreign-key/gloom-blue-weather-app)
 2. Clone locally using
-   `$ git clone https://github.com/foreign-key/react-weather-app.git` or download ZIP file
+   `$ git clone https://github.com/foreign-key/gloom-blue-weather-app.git` or download ZIP file
 3. Enjoy!
 
 ## Notes
