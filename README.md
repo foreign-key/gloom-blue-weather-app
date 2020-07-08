@@ -1,11 +1,14 @@
-# Simple React Weather App
-A simple React app that displays the weather information based on the inputted city name. It consumes data from OpenWeatherMap and uses `https://datahub.io/core/country-list` to convert country code based on 2 digit codes (ISO 3166-1) into their full name.
+# GloomBlue
+A simple weather app created using React.JS that displays the weather information based on the inputted city name. It consumes data from OpenWeatherMap and uses `https://datahub.io/core/country-list` to convert country code based on 2 digit codes (ISO 3166-1) into their full name. Map can also displayed (provided by [react-leaflet](https://react-leaflet.js.org/)) based on the geo coordinates.
+
+## Live Demo
+[GloomBlue](https://gloom-blue-weather-app.herokuapp.com/) on Heroku
 
 ## Instructions
 
-1. Navigate to [repo](https://github.com/foreign-key/react-weather-app)
+1. Navigate to [repo](https://github.com/foreign-key/gloom-blue-weather-app)
 2. Clone locally using
-   `$ git clone https://github.com/foreign-key/react-weather-app.git` or download ZIP file
+   `$ git clone https://github.com/foreign-key/gloom-blue-weather-app.git` or download ZIP file
 3. Enjoy!
 
 ## Notes
@@ -14,6 +17,6 @@ A simple React app that displays the weather information based on the inputted c
 + Currently, it just supports searching by city name.
 
 ## Future Updates
-~~ Integrate maps based on the geo coordinates fetched from the server ~~
-~~ Make some changes on the UI ~~
-+ 7-day forecast
++ ~~Integrate maps based on the geo coordinates fetched from the server~~
++ ~~Make some changes on the UI~~
++ 5-day forecast
