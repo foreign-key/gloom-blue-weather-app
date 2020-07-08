@@ -12,6 +12,7 @@
   flex-shrink: 0;
   float: none;
   clear: both;
+  z-index: 1000 !important;
 }
 
 .footer h6 {

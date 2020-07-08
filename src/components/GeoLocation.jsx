@@ -27,6 +27,13 @@ class Geolocation extends PureComponent {
                     this.props.coordinates.lon,
                   ]}
                   zoom={15}
+                  boxZoom={true}
+                  doubleClickZoom={true}
+                  dragging={true}
+                  zoomSnap={1.5}
+                  zoomDelta={1.5}
+                  tap={true}
+                  zoomControl={true}
                 >
                   <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

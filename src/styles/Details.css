@@ -5,14 +5,16 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 20px;
   color: #99a3a4;
+  padding: 10px;
 }
 
-.weatherMain .table {
-  margin: -10px;
+.resultMain .table {
   color: #99a3a4;
   font-size: 16px;
   overflow-x: hidden;
   overflow-y: hidden;
+  margin-bottom: -10px;
+  margin-top: -10px;
 }
 
 table.borderless td,
@@ -26,10 +28,6 @@ table.borderless th {
 
 .td-value {
   text-align: right;
-}
-
-.weatherMain {
-  padding: 10px;
 }
 
 hr {
@@ -58,6 +56,4 @@ h5 {
   height: 50vh;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  z-index: -1;
-  /* margin-bottom: 20px; */
 }

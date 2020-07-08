@@ -66,7 +66,7 @@ class Details extends Component {
       let tempScale = props.tempScale ? env.REACT_APP_CELC : env.REACT_APP_FAHR;
 
       return (
-        <div className="weatherMain">
+        <div className="resultMain">
           <Row>
             <Col xs={12} md={12} lg={12} xl={12}>
               <h1>{props.result.name}</h1>
@@ -127,13 +127,13 @@ class Details extends Component {
     };
 
     return (
-      <div className="resultMain">
+      <React.Fragment>
         <DisplayResult
           result={this.props.data}
           countries={this.props.countryList}
           tempScale={this.props.isTempCelcius}
         />
-      </div>
+      </React.Fragment>
     );
   }
 }
