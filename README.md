@@ -1,8 +1,8 @@
-# Gloom Blue
+# GloomBlue
 A simple Weather app created using React.JS that displays the weather information based on the inputted city name. It consumes data from OpenWeatherMap and uses `https://datahub.io/core/country-list` to convert country code based on 2 digit codes (ISO 3166-1) into their full name.
 
 ## Live Demo
-[Gloom Blue](https://gloom-blue-weather-app.herokuapp.com/) on Heroku
+[GloomBlue](https://gloom-blue-weather-app.herokuapp.com/) on Heroku
 
 ## Instructions
 
