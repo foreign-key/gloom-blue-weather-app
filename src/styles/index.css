@@ -41,12 +41,12 @@
 }
 
 body {
-  font-family: Noto Sans, sans-serif;
+  font-family: "Andika";
   background: #154360;
   background: -webkit-linear-gradient(to right, #154360, #283747);
   background: linear-gradient(to right, #154360, #283747);
   min-height: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 .weatherBody {
   display: flex;
