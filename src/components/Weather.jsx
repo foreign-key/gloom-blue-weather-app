@@ -5,6 +5,9 @@ import Details from "./Details";
 import Container from "react-bootstrap/Container";
 import GeoLocation from "./GeoLocation";
 import Footer from "./Footer";
+import runtimeEnv from "@mars/heroku-js-runtime-env";
+
+const env = runtimeEnv();
 
 var xhr;
 
@@ -34,7 +37,7 @@ class Weather extends Component {
       xhr = new XMLHttpRequest();
       xhr.open(
         "GET",
-        `http://api.openweathermap.org/data/2.5/weather?q=${inputElement.value}&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`,
+        `https://api.openweathermap.org/data/2.5/weather?q=${inputElement.value}&appid=${env.REACT_APP_OPENWEATHER_API_KEY}`,
         true
       );
       xhr.onload = function (e) {
@@ -48,7 +51,9 @@ class Weather extends Component {
             const Capitalize = (string) => {
               return string.charAt(0).toUpperCase() + string.slice(1);
             };
-            document.title = Capitalize(response.name) + " | Weather Forecast";
+            document.title =
+              Capitalize(response.name) +
+              ` | ${env.REACT_APP_NAME} Weather Forecast`;
           } else {
             this.setState({
               errorMessage: xhr.statusText,
@@ -74,10 +79,11 @@ class Weather extends Component {
 
   geoClickHandler = (event, coordinates) => {
     this.setState({ isMapVisible: true, coordinates: coordinates });
-    // event.preventDefault();
   };
 
   componentDidMount() {
+    document.title = `${env.REACT_APP_NAME} Weather Forecast`;
+
     fetch(
       "https://pkgstore.datahub.io/core/country-list/data_json/data/8c458f2d15d9f2119654b29ede6e45b8/data_json.json"
     )

@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import runtimeEnv from "@mars/heroku-js-runtime-env";
 
 import "../styles/Details.css";
+
+const env = runtimeEnv();
 
 class Details extends Component {
   render() {
@@ -60,7 +63,7 @@ class Details extends Component {
         props.tempScale
       );
       let country = GetCountry(props.countries, props.result.sys.country);
-      let tempScale = props.tempScale ? "°C" : "°F";
+      let tempScale = props.tempScale ? env.REACT_APP_CELC : env.REACT_APP_FAHR;
 
       return (
         <div className="weatherMain">
@@ -71,7 +74,6 @@ class Details extends Component {
               <hr />
               <h5>Current Conditions</h5>
               <h6>{GetCurrentDate()}</h6>
-              {/* <hr /> */}
               <br />
               <h5>ACTUAL TEMPERATURE</h5>
               <h1 style={tempColor(props.result.main.temp)}>
