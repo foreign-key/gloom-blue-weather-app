@@ -34,6 +34,8 @@ class Geolocation extends PureComponent {
                   zoomDelta={1.5}
                   tap={true}
                   zoomControl={true}
+                  maxZoom={18.5}
+                  minZoom={13.5}
                 >
                   <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

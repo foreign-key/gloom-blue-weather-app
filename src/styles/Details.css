@@ -4,12 +4,12 @@
   margin-top: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 20px;
-  color: #99a3a4;
+  color: #b3b6b7;
   padding: 10px;
 }
 
 .resultMain .table {
-  color: #99a3a4;
+  color: #b3b6b7;
   font-size: 16px;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -22,29 +22,22 @@ table.borderless th {
   border: none !important;
 }
 
-.td-title {
-  font-weight: bold;
-}
-
 .td-value {
   text-align: right;
 }
 
 hr {
-  border-top: 1px solid #797d7f;
+  border-top: 1px solid #85929e;
 }
 
-h1 {
-  color: #f4f6f6;
-}
-
+h1,
 h5 {
-  color: #f4f6f6;
+  color: #aed6f1;
 }
 
 .btn-link {
   color: #3498db;
-  margin: -10px;
+  padding-left: 10px;
 }
 
 .btn-link:hover {
@@ -56,4 +49,13 @@ h5 {
   height: 50vh;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding-left: 10px;
 }
