@@ -18,5 +18,7 @@ A simple weather app created using React.JS that displays the weather informatio
 
 ## Future Updates
 + ~~Integrate maps based on the geo coordinates fetched from the server~~
++ ~~Display weather details based on device's location~~
++ ~~Display icons based on the weather of the inputted location~~
 + ~~Make some changes on the UI~~
 + 5-day forecast
