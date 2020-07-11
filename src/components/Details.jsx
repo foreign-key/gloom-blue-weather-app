@@ -54,7 +54,7 @@ class Details extends Component {
               <table className="table table-borderless">
                 <tbody>
                   <tr>
-                    <td className="td-title">Wind</td>
+                    <td className="td-title">Wind Speed</td>
                     <td className="td-value">{props.result.wind.speed} m/s</td>
                   </tr>
                   <tr>

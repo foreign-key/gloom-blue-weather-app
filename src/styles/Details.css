@@ -23,8 +23,8 @@ table.borderless th {
   border: none !important;
 }
 
-.td-value {
-  text-align: right;
+.td-title {
+  width: 7.05rem;
 }
 
 hr {
@@ -53,13 +53,12 @@ h5 {
 }
 .weather-details {
   position: relative;
-  left: 0;
+  margin-left: 80px;
 }
 .img-weather {
   position: absolute;
-  right: 0;
-  margin-right: -4px;
   margin-top: -25px;
+  margin-left: -6px;
 }
 
 h1,
