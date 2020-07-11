@@ -1,5 +1,6 @@
 .resultMain {
-  background-color: #1a5276;
+  background: -webkit-linear-gradient(to right, #154360, #2a688e);
+  background: linear-gradient(to right, #154360, #2a688e);
   border-radius: 10px;
   margin-top: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -37,7 +38,7 @@ h5 {
 
 .btn-link {
   color: #3498db;
-  padding-left: 10px;
+  padding-left: 8px;
 }
 
 .btn-link:hover {
@@ -50,6 +51,16 @@ h5 {
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.weather-details {
+  position: relative;
+  left: 0;
+}
+.img-weather {
+  position: absolute;
+  right: 0;
+  margin-right: -4px;
+  margin-top: -25px;
+}
 
 h1,
 h2,
@@ -58,4 +69,10 @@ h4,
 h5,
 h6 {
   padding-left: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+h6::first-letter {
+  text-transform: capitalize;
 }

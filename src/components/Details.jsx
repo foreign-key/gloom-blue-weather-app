@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import runtimeEnv from "@mars/heroku-js-runtime-env";
+import DateTime from "./DateTime";
+import Temperature from "./Temperature";
 
 import "../styles/Details.css";
-
-const env = runtimeEnv();
 
 class Details extends Component {
   render() {
@@ -19,51 +18,12 @@ class Details extends Component {
       return details[0].Name;
     };
 
-    const ConvertTemperature = (temp, tempScale) => {
-      temp = temp - 273.15;
-      const formula = tempScale ? temp : temp * 1.8 + 32;
-      return formula.toLocaleString(navigator.language, {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 2,
-      });
-    };
-
-    const GetCurrentDate = () => {
-      const date = new Date();
-
-      const days = [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ];
-
-      return `${days[date.getDay()]}, ${new Date().toLocaleString(
-        navigator.language
-      )}`;
-    };
-
-    const tempColor = (temp) => {
-      return {
-        color: parseInt(temp) > 298 ? "#E74C3C" : "#3498DB",
-      };
-    };
-
     const DisplayResult = (props) => {
       if (props.result === undefined || props.result === null) {
         return null;
       }
 
-      let temp = ConvertTemperature(props.result.main.temp, props.tempScale);
-      let feelsLike = ConvertTemperature(
-        props.result.main.feels_like,
-        props.tempScale
-      );
       let country = GetCountry(props.countries, props.result.sys.country);
-      let tempScale = props.tempScale ? env.REACT_APP_CELC : env.REACT_APP_FAHR;
 
       return (
         <div className="resultMain">
@@ -72,23 +32,23 @@ class Details extends Component {
               <h1>{props.result.name}</h1>
               <h6>{country}</h6>
               <hr />
-              <h5>Current Conditions</h5>
-              <h6>{GetCurrentDate()}</h6>
+              <DateTime />
               <br />
-              <h5>ACTUAL TEMPERATURE</h5>
-              <h1 style={tempColor(props.result.main.temp)}>
-                {temp}
-                {tempScale}
-              </h1>
-              <h6>
-                Feels like {feelsLike}
-                {tempScale}
-              </h6>
+              <Temperature
+                main={props.result.main}
+                isCelcius={props.tempScale}
+              />
               <hr />
-              <h5>
-                {props.result.weather[0].main} (
-                {props.result.weather[0].description})
-              </h5>
+              <div className="img-weather">
+                <img
+                  src={`http://openweathermap.org/img/wn/${props.result.weather[0].icon}@2x.png`}
+                  alt="wthr img"
+                />
+              </div>
+              <div className="weather-details">
+                <h5>{props.result.weather[0].main}</h5>
+                <h6>({props.result.weather[0].description})</h6>
+              </div>
               <hr />
 
               <table className="table table-borderless">
