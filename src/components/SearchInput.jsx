@@ -40,9 +40,9 @@ class SearchInput extends Component {
             </form>
           </Col>
           <Col
-            xs={{ span: 4 }}
+            xs={{ span: 3, offset: 1 }}
             md={{ span: 2, offset: 4 }}
-            lg={{ span: 2, offset: 6 }}
+            lg={{ span: 1, offset: 7 }}
             xl={{ span: 1, offset: 7 }}
           >
             <BootstrapSwitchButton
