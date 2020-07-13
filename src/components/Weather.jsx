@@ -5,6 +5,7 @@ import Details from "./Details";
 import Container from "react-bootstrap/Container";
 import GeoLocation from "./GeoLocation";
 import Footer from "./Footer";
+import Loading from "./Loading";
 import runtimeEnv from "@mars/heroku-js-runtime-env";
 
 const env = runtimeEnv();
@@ -23,6 +24,7 @@ class Weather extends Component {
       data: null,
       errorMessage: "",
       isMapVisible: false,
+      isRequesting: false,
     };
 
     this.searchLocation = this.searchLocation.bind(this);
@@ -31,10 +33,6 @@ class Weather extends Component {
 
   searchLocation = (event, inputElement) => {
     if (inputElement.value !== "") {
-      this.setState({
-        isMapVisible: false,
-      });
-
       queryString = `q=${inputElement.value}`;
 
       this.searchWeather();
@@ -47,37 +45,43 @@ class Weather extends Component {
 
   searchWeather = () => {
     xhr = new XMLHttpRequest();
+    this.setState({
+      isMapVisible: false,
+      isRequesting: true,
+    });
+
     xhr.open(
       "GET",
       `https://api.openweathermap.org/data/2.5/weather?${queryString}&appid=${env.REACT_APP_OPENWEATHER_API_KEY}`,
       true
     );
-    xhr.onload = function (e) {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          var response = JSON.parse(xhr.responseText);
-          this.setState({
-            name: response.name,
-            data: response,
-          });
-          const Capitalize = (string) => {
-            return string.charAt(0).toUpperCase() + string.slice(1);
-          };
-          document.title =
-            Capitalize(response.name) +
-            ` | ${env.REACT_APP_NAME} Weather Forecast`;
-        } else {
-          this.setState({
-            errorMessage: xhr.statusText,
-          });
-          console.error(xhr.statusText);
+    setTimeout(() => {
+      xhr.onload = function (e) {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            this.setState({
+              name: response.name,
+              data: response,
+              isRequesting: false,
+            });
+            const Capitalize = (string) => {
+              return string.charAt(0).toUpperCase() + string.slice(1);
+            };
+            document.title =
+              Capitalize(response.name) +
+              ` | ${env.REACT_APP_NAME} Weather Forecast`;
+          } else {
+            this.setState({
+              errorMessage: xhr.statusText,
+              isRequesting: false,
+            });
+          }
         }
-      }
-    }.bind(this);
-    xhr.onerror = function (e) {
-      console.error(xhr.statusText);
-    };
-    xhr.send(null);
+      }.bind(this);
+
+      xhr.send(null);
+    }, 500);
   };
 
   tempChangeHandler = (value) => {
@@ -119,12 +123,19 @@ class Weather extends Component {
             searchHandler={this.searchLocation}
             tempChangeHandler={this.tempChangeHandler}
           />
-
-          <Details {...this.state} geoClicked={this.geoClickHandler} />
-          <GeoLocation
-            isMapVisible={this.state.isMapVisible}
-            coordinates={this.state.coordinates}
-          />
+          {this.state.isRequesting ? (
+            <React.Fragment>
+              <Loading {...this.state} />
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <Details {...this.state} geoClicked={this.geoClickHandler} />
+              <GeoLocation
+                isMapVisible={this.state.isMapVisible}
+                coordinates={this.state.coordinates}
+              />
+            </React.Fragment>
+          )}
         </Container>
         <Footer />
       </React.Fragment>

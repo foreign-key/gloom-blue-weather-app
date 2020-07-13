@@ -42,9 +42,7 @@
 
 body {
   font-family: "Andika";
-  background: #154360;
-  background: -webkit-linear-gradient(to right, #154360, #283747);
-  background: linear-gradient(to right, #154360, #283747);
+  background: #013751;
   min-height: 100%;
   margin-bottom: 60px;
 }
