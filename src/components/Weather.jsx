@@ -35,9 +35,9 @@ class Weather extends Component {
 
   searchLocation = (event, inputElement) => {
     if (inputElement.value !== "") {
-      queryString = `q=${inputElement.value}`;
+      queryString = `q=${inputElement.value.trim()}`;
 
-      this.setState({ name: inputElement.value });
+      this.setState({ name: inputElement.value.trim() });
       this.searchWeather();
     }
 
@@ -116,10 +116,6 @@ class Weather extends Component {
     if (location !== null) {
       docTitle = location.concat(` | ${docTitle}`);
     }
-
-    // const Capitalize = (string) => {
-    //   return string.charAt(0).toUpperCase() + string.slice(1);
-    // };
 
     document.title = docTitle;
   };
