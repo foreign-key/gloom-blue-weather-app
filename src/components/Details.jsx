@@ -19,10 +19,6 @@ class Details extends Component {
     };
 
     const DisplayResult = (props) => {
-      if (props.result === undefined || props.result === null) {
-        return null;
-      }
-
       let country = GetCountry(props.countries, props.result.sys.country);
 
       return (
@@ -74,9 +70,7 @@ class Details extends Component {
               <h5>Geo Coordinates</h5>
               <Button
                 variant="link"
-                onClick={(event) =>
-                  this.props.geoClicked(event, props.result.coord)
-                }
+                onClick={() => this.props.geoClicked(props.result.coord)}
               >
                 ({props.result.coord.lat}, {props.result.coord.lon})
               </Button>
@@ -88,11 +82,13 @@ class Details extends Component {
 
     return (
       <React.Fragment>
-        <DisplayResult
-          result={this.props.data}
-          countries={this.props.countryList}
-          tempScale={this.props.isTempCelcius}
-        />
+        {this.props.data && (
+          <DisplayResult
+            result={this.props.data}
+            countries={this.props.countryList}
+            tempScale={this.props.isTempCelcius}
+          />
+        )}
       </React.Fragment>
     );
   }

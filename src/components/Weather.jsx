@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import GeoLocation from "./GeoLocation";
 import Footer from "./Footer";
 import Loading from "./Loading";
+import Message from "./Message";
 import runtimeEnv from "@mars/heroku-js-runtime-env";
 
 const env = runtimeEnv();
@@ -25,6 +26,7 @@ class Weather extends Component {
       errorMessage: "",
       isMapVisible: false,
       isRequesting: false,
+      isPopAlert: false,
     };
 
     this.searchLocation = this.searchLocation.bind(this);
@@ -35,6 +37,7 @@ class Weather extends Component {
     if (inputElement.value !== "") {
       queryString = `q=${inputElement.value}`;
 
+      this.setState({ name: inputElement.value });
       this.searchWeather();
     }
 
@@ -65,16 +68,14 @@ class Weather extends Component {
               data: response,
               isRequesting: false,
             });
-            const Capitalize = (string) => {
-              return string.charAt(0).toUpperCase() + string.slice(1);
-            };
-            document.title =
-              Capitalize(response.name) +
-              ` | ${env.REACT_APP_NAME} Weather Forecast`;
+            this.updateDocTitle(response.name);
           } else {
+            this.updateDocTitle(null);
             this.setState({
               errorMessage: xhr.statusText,
               isRequesting: false,
+              data: undefined,
+              isPopAlert: true,
             });
           }
         }
@@ -88,13 +89,16 @@ class Weather extends Component {
     this.setState({ isTempCelcius: value });
   };
 
-  geoClickHandler = (event, coordinates) => {
+  geoClickHandler = (coordinates) => {
     this.setState({ isMapVisible: true, coordinates: coordinates });
   };
 
-  componentDidMount() {
-    document.title = `${env.REACT_APP_NAME} Weather Forecast`;
+  toggleModal = () => {
+    this.setState({ isPopAlert: false });
+  };
 
+  componentDidMount() {
+    this.updateDocTitle(null);
     this.weatherInit();
 
     fetch(
@@ -105,6 +109,20 @@ class Weather extends Component {
         this.setState({ countryList: data });
       });
   }
+
+  updateDocTitle = (location) => {
+    let docTitle = `${env.REACT_APP_NAME} Weather Forecast`;
+
+    if (location !== null) {
+      docTitle = location.concat(` | ${docTitle}`);
+    }
+
+    // const Capitalize = (string) => {
+    //   return string.charAt(0).toUpperCase() + string.slice(1);
+    // };
+
+    document.title = docTitle;
+  };
 
   weatherInit = () => {
     const success = (position) => {
@@ -139,6 +157,14 @@ class Weather extends Component {
             </React.Fragment>
           ) : (
             <React.Fragment>
+              {this.state.isPopAlert && (
+                <Message
+                  searchParameter={this.state.name}
+                  errorMessage={this.state.errorMessage}
+                  isPopAlert={this.state.isPopAlert}
+                  toggleModal={this.toggleModal}
+                />
+              )}
               <Details {...this.state} geoClicked={this.geoClickHandler} />
               <GeoLocation
                 isMapVisible={this.state.isMapVisible}
