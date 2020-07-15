@@ -74,6 +74,7 @@ h6 {
 h6::first-letter {
   text-transform: capitalize;
 }
-h1 {
+h1,
+h6 {
   padding-bottom: 2px;
 }

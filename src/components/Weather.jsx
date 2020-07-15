@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "url-search-params-polyfill";
 
 import SearchInput from "./SearchInput";
 import Details from "./Details";
@@ -13,6 +14,12 @@ const env = runtimeEnv();
 
 var xhr;
 var queryString = null;
+
+export function setParams({ query }) {
+  const searchParams = new URLSearchParams();
+  searchParams.set("q", query || "");
+  return searchParams.toString();
+}
 
 class Weather extends Component {
   constructor(props, context) {
@@ -33,12 +40,20 @@ class Weather extends Component {
     this.tempChangeHandler = this.tempChangeHandler.bind(this);
   }
 
+  updateURL = (query) => {
+    const url = setParams({ query: query });
+    this.props.history.push(`?${url}`);
+  };
+
   searchLocation = (event, inputElement) => {
     if (inputElement.value !== "") {
       queryString = `q=${inputElement.value.trim()}`;
 
-      this.setState({ name: inputElement.value.trim() });
+      this.setState({
+        name: inputElement.value.trim(),
+      });
       this.searchWeather();
+      this.updateURL(inputElement.value.trim());
     }
 
     inputElement.focus();
@@ -48,6 +63,7 @@ class Weather extends Component {
 
   searchWeather = () => {
     xhr = new XMLHttpRequest();
+
     this.setState({
       isMapVisible: false,
       isRequesting: true,
@@ -99,7 +115,6 @@ class Weather extends Component {
 
   componentDidMount() {
     this.updateDocTitle(null);
-    this.weatherInit();
 
     fetch(
       "https://pkgstore.datahub.io/core/country-list/data_json/data/8c458f2d15d9f2119654b29ede6e45b8/data_json.json"
@@ -108,6 +123,14 @@ class Weather extends Component {
       .then((data) => {
         this.setState({ countryList: data });
       });
+
+    if (this.props.query !== "") {
+      queryString = `q=${this.props.query}`;
+      this.searchWeather();
+      this.updateURL(this.props.query);
+    } else {
+      this.weatherInit();
+    }
   }
 
   updateDocTitle = (location) => {
@@ -123,7 +146,7 @@ class Weather extends Component {
   weatherInit = () => {
     const success = (position) => {
       queryString = `lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
-      this.searchWeather(() => queryString);
+      this.searchWeather();
     };
 
     const error = () => {
