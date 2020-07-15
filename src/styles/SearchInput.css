@@ -6,7 +6,6 @@
   outline: none;
   background-color: #d5d8dc;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
   padding-left: 2.375rem;
 }
 .searchInput .search-feedback {
@@ -20,17 +19,14 @@
   color: #3498db;
 }
 .switch {
+  right: 0;
+  display: inline-block;
   position: absolute;
   margin-top: 19.5px;
-  right: 0;
-  margin-right: 20px;
-  border-radius: 20rem;
+  margin-right: 1rem;
+  border-radius: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.switch-on,
-.switch-off {
-  border-radius: 20rem;
-}
 .switch .switch-handle {
-  border-radius: 20rem;
+  border-radius: 20px;
 }

@@ -24,7 +24,7 @@ class Details extends Component {
       return (
         <div className="resultMain">
           <Row>
-            <Col xs={12} md={12} lg={12} xl={12}>
+            <Col xs={12} sm={12} md={12} lg={12} xl={12}>
               <h1>{props.result.name}</h1>
               <h6>{country}</h6>
               <hr />

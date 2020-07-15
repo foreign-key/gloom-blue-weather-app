@@ -20,7 +20,7 @@ class Geolocation extends PureComponent {
         props.isMapVisible && (
           <div>
             <Row>
-              <Col xs={12} md={12} lg={12} xl={12}>
+              <Col xs={12} sm={12} md={12} lg={12} xl={12}>
                 <Map
                   center={[
                     this.props.coordinates.lat,

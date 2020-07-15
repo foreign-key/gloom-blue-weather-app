@@ -16,7 +16,7 @@ class Footer extends Component {
       <div className="footer">
         <Container>
           <Row>
-            <Col xs={12} md={12} lg={12} xl={12}>
+            <Col xs={12} sm={12} md={12} lg={12} xl={12}>
               <h6>{env.REACT_APP_NAME} © 2020</h6>
 
               <div className="social-container">

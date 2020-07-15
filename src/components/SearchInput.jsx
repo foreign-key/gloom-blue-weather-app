@@ -18,7 +18,8 @@ class SearchInput extends Component {
       <div className="searchMain">
         <Row>
           <Col
-            xs={{ span: 8 }}
+            xs={{ span: 9 }}
+            sm={{ span: 10 }}
             md={{ span: 6 }}
             lg={{ span: 4 }}
             xl={{ span: 4 }}
@@ -40,9 +41,10 @@ class SearchInput extends Component {
             </form>
           </Col>
           <Col
-            xs={{ span: 3, offset: 1 }}
+            xs={{ span: 3 }}
+            sm={{ span: 2 }}
             md={{ span: 2, offset: 4 }}
-            lg={{ span: 1, offset: 7 }}
+            lg={{ span: 2, offset: 6 }}
             xl={{ span: 1, offset: 7 }}
           >
             <BootstrapSwitchButton

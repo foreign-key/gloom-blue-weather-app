@@ -29,12 +29,12 @@ class Loading extends React.Component {
           <div className="d-flex justify-content-center align-items-center">
             {this.props.isRequesting && (
               <React.Fragment>
-                <Col xs={1} s={2} md={2} lg={3} />
-                <Col xs={10} s={8} md={8} lg={6}>
+                <Col xs={1} sm={2} md={2} lg={3} />
+                <Col xs={10} sm={8} md={8} lg={6}>
                   <h3>Forecasting...</h3>
                   <Lottie options={defaultOptions} height={150} width={150} />
                 </Col>
-                <Col xs={1} s={2} md={2} lg={3} />
+                <Col xs={1} sm={2} md={2} lg={3} />
               </React.Fragment>
             )}
           </div>

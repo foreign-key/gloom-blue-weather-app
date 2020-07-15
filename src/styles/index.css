@@ -57,3 +57,7 @@ body {
 .modal {
   top: 25%;
 }
+.searchMain {
+  overflow: hidden;
+  height: 80px;
+}
