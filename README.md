@@ -16,6 +16,14 @@ A simple weather app created using React.JS that displays the weather informatio
 + To be able to run the app, an **API key** must be supplied from `https://openweathermap.org/`.
 + Currently, it just supports searching by city name.
 
+## Current Features
++ Maps can be displayed based on the geo coordinates fetched from the server
++ Display weather details based on device's location
++ Display icons based on the weather of the inputted location
++ Display loading screen when sending request to server
++ User can save a bookmark of the location previously searched and ability to go back and forward to the app
++ 5-day forecast
+
 ## Future Updates
 + ~~Integrate maps based on the geo coordinates fetched from the server~~
 + ~~Display weather details based on device's location~~
