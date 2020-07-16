@@ -35,7 +35,7 @@ class Details extends Component {
                   <div className="today-weather-visual">
                     <div className="img-weather">
                       <img
-                        src={`http://openweathermap.org/img/wn/${props.data.weather[0].icon}@2x.png`}
+                        src={`https://openweathermap.org/img/wn/${props.data.weather[0].icon}@2x.png`}
                         alt="wthr img"
                       />
                     </div>

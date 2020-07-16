@@ -1,3 +1,5 @@
+import "react-app-polyfill/ie11";
+import "react-app-polyfill/stable";
 import React, { Component } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -7,7 +9,7 @@ import { convertTemperature, tempScale, tempColor } from "./Temperature";
 
 class Forecast extends Component {
   render() {
-    if (this.props) {
+    if (this.props.city) {
       let days = null;
 
       if (this.props.list.length > 0) {
@@ -19,13 +21,12 @@ class Forecast extends Component {
           ];
 
           const todayDate = todayWeather.dt_txt.split(" ");
-          const lists = uniqueDates.map((item) => {
-            const date = Date.parse(`${item} ${todayDate[1]}`);
-            return list.filter((x) => Date.parse(x.dt_txt) === date)[0];
-          });
-
-          const spliced = lists.slice(1, lists.length - 1);
-          return spliced;
+          return uniqueDates
+            .map((item) => {
+              const date = Date.parse(`${item} ${todayDate[1]}`);
+              return list.filter((x) => Date.parse(x.dt_txt) === date)[0];
+            })
+            .slice(1, uniqueDates.length - 1);
         };
 
         days = (
@@ -39,7 +40,7 @@ class Forecast extends Component {
                     <Col>
                       <div className="img-weather">
                         <img
-                          src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
+                          src={`https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
                           alt="wthr img"
                         />
                       </div>
@@ -66,6 +67,8 @@ class Forecast extends Component {
       }
 
       return <React.Fragment>{days}</React.Fragment>;
+    } else {
+      return <></>;
     }
   }
 }
