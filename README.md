@@ -17,12 +17,11 @@ A simple weather app created using React.JS that displays the weather informatio
 + Currently, it just supports searching by city name.
 
 ## Current Features
-+ Integrate maps based on the geo coordinates fetched from the server
++ Maps can be displayed based on the geo coordinates fetched from the server
 + Display weather details based on device's location
 + Display icons based on the weather of the inputted location
-+ Added loading screen when sending request to server
-+ Save a bookmark of the location previously searched and ability to go back and forward to the app
-+ Make some changes on the UI
++ Display loading screen when sending request to server
++ User can save a bookmark of the location previously searched and ability to go back and forward to the app
 + 5-day forecast
 
 ## Future Updates
