@@ -23,4 +23,4 @@ A simple weather app created using React.JS that displays the weather informatio
 + ~~Added loading screen when sending request to server~~
 + ~~Save a bookmark of the location previously searched and ability to go back and forward to the app~~
 + ~~Make some changes on the UI~~
-+ 5-day forecast
++ ~~5-day forecast~~
