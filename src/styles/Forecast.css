@@ -1,0 +1,51 @@
+.forecastMain {
+  background: #154360;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 18px;
+  color: #b3b6b7;
+  padding: 10px;
+}
+
+hr {
+  border-top: 1px solid #85929e;
+}
+
+h1,
+h5 {
+  color: #aed6f1;
+}
+
+.weather-details {
+  position: relative;
+  margin-left: 80px;
+}
+.img-weather {
+  position: absolute;
+  margin-top: -25px;
+  margin-left: -6px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding-left: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+h6::first-letter {
+  text-transform: capitalize;
+}
+h1,
+h6 {
+  padding-bottom: 2px;
+}
+
+.forecastMain h1 {
+  text-align: right;
+  margin-right: 10px;
+}

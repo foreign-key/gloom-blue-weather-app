@@ -1,5 +1,19 @@
 import React, { Component } from "react";
 
+export function getCurrentDay(date) {
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  return days[date.getDay()];
+}
+
 class DateTime extends Component {
   componentDidMount() {
     this.interval = setInterval(
@@ -16,17 +30,7 @@ class DateTime extends Component {
     const GetCurrentDate = () => {
       const date = new Date();
 
-      const days = [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ];
-
-      return `${days[date.getDay()]}, ${new Date().toLocaleString(
+      return `${getCurrentDay(date)}, ${date.toLocaleString(
         navigator.language
       )}`;
     };

@@ -1,13 +1,16 @@
 import React, { Component } from "react";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 import "url-search-params-polyfill";
 
-import SearchInput from "./SearchInput";
 import Details from "./Details";
-import Container from "react-bootstrap/Container";
-import GeoLocation from "./GeoLocation";
+import Forecast from "./Forecast";
 import Footer from "./Footer";
+import GeoLocation from "./GeoLocation";
 import Loading from "./Loading";
 import Message from "./Message";
+import SearchInput from "./SearchInput";
 import runtimeEnv from "@mars/heroku-js-runtime-env";
 
 const env = runtimeEnv();
@@ -27,13 +30,15 @@ class Weather extends Component {
 
     this.state = {
       name: "",
-      isTempCelcius: true,
+      city: null,
       coordinates: [],
       data: null,
       errorMessage: "",
       isMapVisible: false,
-      isRequesting: false,
       isPopAlert: false,
+      isRequesting: false,
+      isTempCelcius: true,
+      list: [],
     };
 
     this.searchLocation = this.searchLocation.bind(this);
@@ -71,27 +76,31 @@ class Weather extends Component {
 
     xhr.open(
       "GET",
-      `https://api.openweathermap.org/data/2.5/weather?${queryString}&appid=${env.REACT_APP_OPENWEATHER_API_KEY}`,
+      `https://api.openweathermap.org/data/2.5/forecast?${queryString}&appid=${env.REACT_APP_OPENWEATHER_API_KEY}`,
       true
     );
     setTimeout(() => {
       xhr.onload = function (e) {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
-            var response = JSON.parse(xhr.responseText);
+            var response = JSON.parse(xhr.response);
             this.setState({
-              name: response.name,
-              data: response,
+              name: response.city.name,
+              city: response.city,
+              data: response.list[0],
               isRequesting: false,
+              list: response.list,
             });
-            this.updateDocTitle(response.name);
+            this.updateDocTitle(response.city.name);
           } else {
             this.updateDocTitle(null);
             this.setState({
               errorMessage: xhr.statusText,
               isRequesting: false,
+              city: undefined,
               data: undefined,
               isPopAlert: true,
+              list: [],
             });
           }
         }
@@ -184,15 +193,22 @@ class Weather extends Component {
                   toggleModal={this.toggleModal}
                 />
               )}
-              <Details {...this.state} geoClicked={this.geoClickHandler} />
+              <Row>
+                <Col>
+                  <Details {...this.state} geoClicked={this.geoClickHandler} />
+                </Col>
+                <Col>
+                  <Forecast {...this.state} />
+                </Col>
+              </Row>
               <GeoLocation
                 isMapVisible={this.state.isMapVisible}
                 coordinates={this.state.coordinates}
               />
             </React.Fragment>
           )}
+          <Footer />
         </Container>
-        <Footer />
       </React.Fragment>
     );
   }

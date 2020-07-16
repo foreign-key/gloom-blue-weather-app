@@ -44,7 +44,7 @@ body {
   font-family: "Andika";
   background: #013751;
   min-height: 100%;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 .weatherBody {
   display: flex;
