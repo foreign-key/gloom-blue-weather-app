@@ -40,45 +40,40 @@ export function getExactTime() {
 
   if (
     time > new Date().setHours(0, 0, 0) &&
-    time < new Date().setHours(3, 0, 0)
-  ) {
-    return "3:00:00";
-  } else if (
-    time > new Date().setHours(3, 0, 0) &&
-    time < new Date().setHours(6, 0, 0)
+    time <= new Date().setHours(6, 0, 0)
   ) {
     return "6:00:00";
   } else if (
     time > new Date().setHours(6, 0, 0) &&
-    time < new Date().setHours(9, 0, 0)
-  ) {
-    return "9:00:00";
-  } else if (
-    time > new Date().setHours(9, 0, 0) &&
-    time < new Date().setHours(12, 0, 0)
+    time <= new Date().setHours(12, 0, 0)
   ) {
     return "12:00:00";
   } else if (
     time > new Date().setHours(12, 0, 0) &&
-    time < new Date().setHours(15, 0, 0)
-  ) {
-    return "15:00:00";
-  } else if (
-    time > new Date().setHours(15, 0, 0) &&
-    time < new Date().setHours(18, 0, 0)
+    time <= new Date().setHours(18, 0, 0)
   ) {
     return "18:00:00";
   } else if (
     time > new Date().setHours(18, 0, 0) &&
-    time < new Date().setHours(21, 0, 0)
-  ) {
-    return "21:00:00";
-  } else if (
-    time > new Date().setHours(21, 0, 0) &&
     time <= new Date().setHours(23, 59, 59)
   ) {
-    return "0:00:00";
+    return "21:00:00";
   }
 
   return null;
+}
+
+export function filteredForecast(forecastList) {
+  let filters = [];
+  for (const item of forecastList) {
+    const date = item.dt_txt.split(" ")[0];
+    const today = new Date().toISOString().substring(0, 10);
+    if (!filters.includes(date) && Date.parse(date) > Date.parse(today)) {
+      if (Date.parse(item.dt_txt) === Date.parse(`${date} ${getExactTime()}`)) {
+        filters.push(item);
+      }
+    }
+  }
+
+  return filters;
 }

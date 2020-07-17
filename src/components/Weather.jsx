@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import { getExactTime } from "./Helpers";
+import { filteredForecast, getExactTime } from "./Helpers";
 import "url-search-params-polyfill";
 
 import Details from "./Details";
@@ -34,6 +34,7 @@ class Weather extends Component {
       city: null,
       coordinates: [],
       data: null,
+      filteredForecast: [],
       errorMessage: "",
       isMapVisible: false,
       isPopAlert: false,
@@ -91,6 +92,7 @@ class Weather extends Component {
               isRequesting: false,
               list: response.list,
             });
+            this.filterForecast();
             this.getTodayForecast();
             this.updateDocTitle(response.city.name);
           } else {
@@ -109,6 +111,13 @@ class Weather extends Component {
 
       xhr.send(null);
     }, 500);
+  };
+
+  filterForecast = () => {
+    const list = [...this.state.list];
+    const filteredList = filteredForecast(list).filter(Boolean);
+
+    this.setState({ filteredForecast: filteredList });
   };
 
   getTodayForecast = () => {
@@ -210,7 +219,10 @@ class Weather extends Component {
                   <Details {...this.state} geoClicked={this.geoClickHandler} />
                 </Col>
                 <Col>
-                  <Forecast {...this.state} />
+                  <Forecast
+                    forecastList={this.state.filteredForecast}
+                    isCelcius={this.state.isTempCelcius}
+                  />
                 </Col>
               </Row>
               <GeoLocation
