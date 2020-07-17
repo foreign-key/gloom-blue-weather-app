@@ -67,8 +67,7 @@ export function filteredForecast(forecastList) {
   let filters = [];
   for (const item of forecastList) {
     const date = item.dt_txt.split(" ")[0];
-    const today = new Date().toISOString().substring(0, 10);
-    if (!filters.includes(date) && Date.parse(date) > Date.parse(today)) {
+    if (!filters.includes(date) && Date.parse(date) > Date.parse(getDate())) {
       if (Date.parse(item.dt_txt) === Date.parse(`${date} ${getExactTime()}`)) {
         filters.push(item);
       }
@@ -76,4 +75,11 @@ export function filteredForecast(forecastList) {
   }
 
   return filters;
+}
+
+export function getDate() {
+  const date = new Date();
+  return `${date.getFullYear()}-${
+    date.getMonth().toString().length === 1 ? "0" : ""
+  }${date.getMonth() + 1}-${date.getDate()}`;
 }

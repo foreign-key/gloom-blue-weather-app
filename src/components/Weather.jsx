@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import { filteredForecast, getExactTime } from "./Helpers";
-import "url-search-params-polyfill";
+import { filteredForecast, getDate, getExactTime } from "./Helpers";
 
 import Details from "./Details";
 import Forecast from "./Forecast";
@@ -98,10 +97,11 @@ class Weather extends Component {
           } else {
             this.updateDocTitle(null);
             this.setState({
-              errorMessage: xhr.statusText,
-              isRequesting: false,
               city: undefined,
               data: undefined,
+              errorMessage: xhr.statusText,
+              filteredForecast: [],
+              isRequesting: false,
               isPopAlert: true,
               list: [],
             });
@@ -122,11 +122,8 @@ class Weather extends Component {
 
   getTodayForecast = () => {
     const list = [...this.state.list];
-    const today = list.filter(
-      (x) =>
-        x.dt_txt ===
-        `${new Date().toISOString().slice(0, 10)} ${getExactTime()}`
-    )[0];
+    const currentDate = Date.parse(`${getDate()} ${getExactTime()}`);
+    const today = list.filter((x) => Date.parse(x.dt_txt) === currentDate)[0];
 
     this.setState({ data: today });
   };
@@ -187,7 +184,7 @@ class Weather extends Component {
       navigator.geolocation.getCurrentPosition(success, error);
     } else {
       alert(
-        "Your browser does not support location tracking, or permission is denied."
+        "Your browser does not support location tracking or permission is denied."
       );
     }
   };
