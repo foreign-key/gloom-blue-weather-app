@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import { getExactTime } from "./Helpers";
 import "url-search-params-polyfill";
 
 import Details from "./Details";
@@ -87,10 +88,10 @@ class Weather extends Component {
             this.setState({
               name: response.city.name,
               city: response.city,
-              data: response.list[0],
               isRequesting: false,
               list: response.list,
             });
+            this.getTodayForecast();
             this.updateDocTitle(response.city.name);
           } else {
             this.updateDocTitle(null);
@@ -108,6 +109,17 @@ class Weather extends Component {
 
       xhr.send(null);
     }, 500);
+  };
+
+  getTodayForecast = () => {
+    const list = [...this.state.list];
+    const today = list.filter(
+      (x) =>
+        x.dt_txt ===
+        `${new Date().toISOString().slice(0, 10)} ${getExactTime()}`
+    )[0];
+
+    this.setState({ data: today });
   };
 
   tempChangeHandler = (value) => {

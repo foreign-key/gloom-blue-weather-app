@@ -85,5 +85,9 @@ h6::first-letter {
 }
 h1,
 h6 {
-  padding-bottom: 2px;
+  padding-bottom: 1px;
+}
+.today-weather h1 {
+  font-size: 64px;
+  margin-top: -10px;
 }

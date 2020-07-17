@@ -1,18 +1,5 @@
 import React, { Component } from "react";
-
-export function getCurrentDay(date) {
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-
-  return days[date.getDay()];
-}
+import { getCurrentDay } from "./Helpers";
 
 class DateTime extends Component {
   componentDidMount() {
@@ -36,10 +23,10 @@ class DateTime extends Component {
     };
 
     return (
-      <>
+      <React.Fragment>
         <h5>Current Conditions</h5>
         <h6>{GetCurrentDate()}</h6>
-      </>
+      </React.Fragment>
     );
   }
 }
