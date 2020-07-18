@@ -10,7 +10,7 @@ class Message extends Component {
         searchParameter={this.props.searchParameter}
         errorMessage={this.props.errorMessage}
       >
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>{this.props.errorMessage}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
