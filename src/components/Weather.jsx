@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import { dateParser, filteredForecast, getDate, getExactTime } from "./Helpers";
+import { filteredForecast } from "./Helpers";
 
 import Details from "./Details";
 import Forecast from "./Forecast";
@@ -116,16 +116,11 @@ class Weather extends Component {
   filterForecast = () => {
     const list = [...this.state.list];
     const filteredList = filteredForecast(list).filter(Boolean);
-
     this.setState({ filteredForecast: filteredList });
   };
 
   getTodayForecast = () => {
-    const list = [...this.state.list];
-    const currentDate = dateParser(`${getDate()} ${getExactTime()}`);
-    let today = list.filter((x) => dateParser(x.dt_txt) === currentDate);
-
-    this.setState({ data: today[0] });
+    this.setState({ data: this.state.filteredForecast[0] });
   };
 
   tempChangeHandler = (value) => {

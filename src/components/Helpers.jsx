@@ -67,7 +67,7 @@ export function filteredForecast(forecastList) {
   return forecastList.map((item) => {
     const date = item.dt_txt.split(" ")[0];
     if (
-      Date.parse(date) > Date.parse(getDate()) &&
+      Date.parse(date) >= Date.parse(getDate()) &&
       dateParser(item.dt_txt) === dateParser(`${date} ${getExactTime()}`)
     ) {
       return item;

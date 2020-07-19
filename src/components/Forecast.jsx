@@ -7,6 +7,7 @@ import "../styles/Forecast.css";
 import {
   convertTemperature,
   getCurrentDay,
+  getDate,
   tempColor,
   tempScale,
 } from "./Helpers";
@@ -19,7 +20,7 @@ class Forecast extends Component {
       days = (
         <React.Fragment>
           {this.props.forecastList.map((item, index) => {
-            if (item !== undefined) {
+            if (item !== undefined && item.dt_txt.split(" ")[0] !== getDate()) {
               return (
                 <div className="forecastMain" key={index}>
                   <h6>{getCurrentDay(new Date(item.dt_txt))}</h6>

@@ -5,7 +5,9 @@
   border-color: #808080;
   outline: none;
   background-color: #d5d8dc;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(59, 59, 59, 1);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(59, 59, 59, 1);
+  box-shadow: 0px 0px 20px 0px rgba(59, 59, 59, 1);
   padding-left: 2.375rem;
 }
 .searchInput .search-feedback {
@@ -25,7 +27,9 @@
   margin-top: 19.5px;
   margin-right: 1rem;
   border-radius: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(59, 59, 59, 1);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(59, 59, 59, 1);
+  box-shadow: 0px 0px 20px 0px rgba(59, 59, 59, 1);
 }
 .switch .switch-handle {
   border-radius: 20px;
