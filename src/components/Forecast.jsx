@@ -19,32 +19,38 @@ class Forecast extends Component {
       days = (
         <React.Fragment>
           {this.props.forecastList.map((item, index) => {
-            return (
-              <div className="forecastMain" key={index}>
-                <h6>{getCurrentDay(new Date(item.dt_txt))}</h6>
-                <hr />
-                <Row>
-                  <Col>
-                    <div className="img-weather">
-                      <img
-                        src={`https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
-                        alt="wthr img"
-                      />
-                    </div>
-                    <div className="weather-details">
-                      <h5>{item.weather[0].main}</h5>
-                      <h6>({item.weather[0].description})</h6>
-                    </div>
-                  </Col>
-                  <Col>
-                    <h1 style={tempColor(item.main.temp)}>
-                      {convertTemperature(item.main.temp, this.props.isCelcius)}
-                      {tempScale(this.props.isCelcius)}
-                    </h1>
-                  </Col>
-                </Row>
-              </div>
-            );
+            if (item !== undefined) {
+              return (
+                <div className="forecastMain" key={index}>
+                  <h6>{getCurrentDay(new Date(item.dt_txt))}</h6>
+                  <hr />
+                  <Row>
+                    <Col>
+                      <div className="img-weather">
+                        <img
+                          src={`https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
+                          alt="wthr img"
+                        />
+                      </div>
+                      <div className="weather-details">
+                        <h5>{item.weather[0].main}</h5>
+                        <h6>({item.weather[0].description})</h6>
+                      </div>
+                    </Col>
+                    <Col>
+                      <h1 style={tempColor(item.main.temp)}>
+                        {convertTemperature(
+                          item.main.temp,
+                          this.props.isCelcius
+                        )}
+                        {tempScale(this.props.isCelcius)}
+                      </h1>
+                    </Col>
+                  </Row>
+                </div>
+              );
+            }
+            return null;
           })}
         </React.Fragment>
       );

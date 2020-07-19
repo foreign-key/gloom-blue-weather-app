@@ -64,19 +64,20 @@ export function getExactTime() {
 }
 
 export function filteredForecast(forecastList) {
-  return forecastList
-    .map(
-      function (item) {
-        const date = item.dt_txt.split(" ")[0];
-        if (
-          Date.parse(date) > Date.parse(this.date) &&
-          Date.parse(item.dt_txt) === Date.parse(`${date} ${this.time}`)
-        ) {
-          return item;
-        }
-      }.bind({ date: getDate(), time: getExactTime() })
-    )
-    .filter(Boolean);
+  return forecastList.map((item) => {
+    const date = item.dt_txt.split(" ")[0];
+    if (
+      Date.parse(date) > Date.parse(getDate()) &&
+      dateParser(item.dt_txt) === dateParser(`${date} ${getExactTime()}`)
+    ) {
+      return item;
+    }
+    return false;
+  });
+}
+
+export function dateParser(date) {
+  return Date.parse(new Date(date.replace(" ", "T")));
 }
 
 export function getDate() {
