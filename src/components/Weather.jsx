@@ -84,16 +84,7 @@ class Weather extends Component {
       xhr.onload = function (e) {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
-            var response = JSON.parse(xhr.response);
-            this.setState({
-              name: response.city.name,
-              city: response.city,
-              isRequesting: false,
-              list: response.list,
-            });
-            this.filterForecast();
-            this.getTodayForecast();
-            this.updateDocTitle(response.city.name);
+            this.filterForecast(JSON.parse(xhr.response));
           } else {
             this.updateDocTitle(null);
             this.setState({
@@ -113,10 +104,18 @@ class Weather extends Component {
     }, 500);
   };
 
-  filterForecast = () => {
-    const list = [...this.state.list];
-    const filteredList = filteredForecast(list).filter(Boolean);
-    this.setState({ filteredForecast: filteredList });
+  filterForecast = (response) => {
+    const filteredList = filteredForecast(response.list).filter(Boolean);
+
+    this.setState({
+      name: response.city.name,
+      city: response.city,
+      filteredForecast: filteredList,
+      isRequesting: false,
+      list: response.list,
+    });
+    this.getTodayForecast();
+    this.updateDocTitle(response.city.name);
   };
 
   getTodayForecast = () => {
@@ -146,14 +145,22 @@ class Weather extends Component {
         this.setState({ countryList: data });
       });
 
+    this.refreshPage(true);
+
+    window.onpopstate = (e) => {
+      this.refreshPage(false);
+    };
+  }
+
+  refreshPage = (shouldUpdateURL) => {
     if (this.props.query !== "") {
       queryString = `q=${this.props.query}`;
       this.searchWeather();
-      this.updateURL(this.props.query);
+      shouldUpdateURL && this.updateURL(this.props.query);
     } else {
       this.weatherInit();
     }
-  }
+  };
 
   updateDocTitle = (location) => {
     let docTitle = `${env.REACT_APP_NAME} Weather Forecast`;

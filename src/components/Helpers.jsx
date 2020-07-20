@@ -42,7 +42,7 @@ export function getExactTime() {
     time > new Date().setHours(0, 0, 0) &&
     time <= new Date().setHours(6, 0, 0)
   ) {
-    return "6:00:00";
+    return "06:00:00";
   } else if (
     time > new Date().setHours(6, 0, 0) &&
     time <= new Date().setHours(12, 0, 0)
