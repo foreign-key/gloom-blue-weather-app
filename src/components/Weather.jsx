@@ -125,7 +125,7 @@ class Weather extends Component {
     if (this.props.query !== "") {
       queryString = `q=${this.props.query}`;
       this.searchWeather();
-      shouldUpdateURL && this.updateURL(this.props.query);
+      shouldUpdateURL && updateURL(this.props.query, this.props.history);
     } else {
       this.weatherInit();
     }
