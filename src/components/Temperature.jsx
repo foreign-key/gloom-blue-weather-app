@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { convertTemperature, tempScale, tempColor } from "./Helpers";
+import { convertTemperature, tempScale, tempColor } from "../helpers/Helpers";
 
 class Temperature extends Component {
   render() {

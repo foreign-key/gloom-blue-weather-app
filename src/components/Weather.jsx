@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import { filteredForecast } from "./Helpers";
+import { filteredForecast } from "../helpers/Helpers";
+import { queryCountries, queryForecast } from "../helpers/RequestHandlers";
+import { updateURL } from "../helpers/RouterHelpers";
 
 import Details from "./Details";
 import Forecast from "./Forecast";
@@ -14,15 +16,7 @@ import SearchInput from "./SearchInput";
 import runtimeEnv from "@mars/heroku-js-runtime-env";
 
 const env = runtimeEnv();
-
-var xhr;
 var queryString = null;
-
-export function setParams({ query }) {
-  const searchParams = new URLSearchParams();
-  searchParams.set("q", query || "");
-  return searchParams.toString();
-}
 
 class Weather extends Component {
   constructor(props, context) {
@@ -46,20 +40,14 @@ class Weather extends Component {
     this.tempChangeHandler = this.tempChangeHandler.bind(this);
   }
 
-  updateURL = (query) => {
-    const url = setParams({ query: query });
-    this.props.history.push(`?${url}`);
-  };
-
   searchLocation = (event, inputElement) => {
     if (inputElement.value !== "") {
-      queryString = `q=${inputElement.value.trim()}`;
+      const keyword = inputElement.value.trim();
+      queryString = `q=${keyword}`;
 
-      this.setState({
-        name: inputElement.value.trim(),
-      });
+      this.setState({ name: keyword });
       this.searchWeather();
-      this.updateURL(inputElement.value.trim());
+      updateURL(keyword, this.props.history);
     }
 
     inputElement.focus();
@@ -68,58 +56,43 @@ class Weather extends Component {
   };
 
   searchWeather = () => {
-    xhr = new XMLHttpRequest();
+    this.setState({ isMapVisible: false, isRequesting: true });
 
-    this.setState({
-      isMapVisible: false,
-      isRequesting: true,
-    });
-
-    xhr.open(
-      "GET",
-      `https://api.openweathermap.org/data/2.5/forecast?${queryString}&appid=${env.REACT_APP_OPENWEATHER_API_KEY}`,
-      true
-    );
     setTimeout(() => {
-      xhr.onload = function (e) {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            this.filterForecast(JSON.parse(xhr.response));
-          } else {
-            this.updateDocTitle(null);
-            this.setState({
-              city: undefined,
-              data: undefined,
-              errorMessage: xhr.statusText,
-              filteredForecast: [],
-              isRequesting: false,
-              isPopAlert: true,
-              list: [],
-            });
-          }
-        }
-      }.bind(this);
-
-      xhr.send(null);
+      queryForecast(queryString)
+        .then((data) => {
+          this.filterForecast(data);
+        })
+        .catch(function (err) {
+          this.updateDocTitle(null);
+          this.setState({
+            city: undefined,
+            data: undefined,
+            errorMessage: err,
+            filteredForecast: [],
+            isRequesting: false,
+            isPopAlert: true,
+            list: [],
+          });
+        });
     }, 500);
   };
 
   filterForecast = (response) => {
-    const filteredList = filteredForecast(response.list).filter(Boolean);
+    if (response !== undefined) {
+      const filteredList = filteredForecast(response.list).filter(Boolean);
 
-    this.setState({
-      name: response.city.name,
-      city: response.city,
-      filteredForecast: filteredList,
-      isRequesting: false,
-      list: response.list,
-    });
-    this.getTodayForecast();
-    this.updateDocTitle(response.city.name);
-  };
+      this.setState({
+        name: response.city.name,
+        city: response.city,
+        data: filteredList[0],
+        filteredForecast: filteredList,
+        isRequesting: false,
+        list: response.list,
+      });
 
-  getTodayForecast = () => {
-    this.setState({ data: this.state.filteredForecast[0] });
+      this.updateDocTitle(response.city.name);
+    }
   };
 
   tempChangeHandler = (value) => {
@@ -137,17 +110,13 @@ class Weather extends Component {
   componentDidMount() {
     this.updateDocTitle(null);
 
-    fetch(
-      "https://pkgstore.datahub.io/core/country-list/data_json/data/8c458f2d15d9f2119654b29ede6e45b8/data_json.json"
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({ countryList: data });
-      });
+    queryCountries().then((data) => {
+      this.setState({ countryList: data });
+    });
 
     this.refreshPage(true);
 
-    window.onpopstate = (e) => {
+    window.onpopstate = () => {
       this.refreshPage(false);
     };
   }

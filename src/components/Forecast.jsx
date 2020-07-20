@@ -10,7 +10,7 @@ import {
   getDate,
   tempColor,
   tempScale,
-} from "./Helpers";
+} from "../helpers/Helpers";
 
 class Forecast extends Component {
   render() {

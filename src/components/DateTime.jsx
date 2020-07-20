@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getCurrentDay } from "./Helpers";
+import { getCurrentDay } from "../helpers/Helpers";
 
 class DateTime extends Component {
   componentDidMount() {
