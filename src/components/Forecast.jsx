@@ -35,7 +35,6 @@ class Forecast extends Component {
                       </div>
                       <div className="weather-details">
                         <h5>{item.weather[0].main}</h5>
-                        <h6>({item.weather[0].description})</h6>
                       </div>
                     </Col>
                     <Col>
@@ -46,6 +45,13 @@ class Forecast extends Component {
                         )}
                         {tempScale(this.props.isCelcius)}
                       </h1>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <div className="weather-details">
+                        <h6>({item.weather[0].description})</h6>
+                      </div>
                     </Col>
                   </Row>
                 </div>

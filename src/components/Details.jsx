@@ -109,7 +109,7 @@ class Details extends Component {
                       />
                     </div>
                     <h6>
-                      <span style={{ marginRight: "2.3rem" }}>SUNRISE</span>
+                      <span style={{ marginRight: "3.1rem" }}>Sunrise</span>
                       {sunrise}
                     </h6>
                   </div>
@@ -122,7 +122,7 @@ class Details extends Component {
                       />
                     </div>
                     <h6>
-                      <span style={{ marginRight: "2.7rem" }}>SUNSET</span>
+                      <span style={{ marginRight: "3.4rem" }}>Sunset</span>
                       {sunset}
                     </h6>
                   </div>

@@ -2,7 +2,7 @@ import runtimeEnv from "@mars/heroku-js-runtime-env";
 
 const env = runtimeEnv();
 
-export function convertTemperature(temp, tempScale, precision = 1) {
+export function convertTemperature(temp, tempScale, precision = 0) {
   temp = temp - 273.15;
   const formula = tempScale ? temp : temp * 1.8 + 32;
   return formula.toLocaleString(navigator.language, {
@@ -17,7 +17,7 @@ export function tempScale(isCelcius) {
 
 export function tempColor(temp) {
   return {
-    color: parseInt(temp) > 298 ? "#E74C3C" : "#66CCFF",
+    color: parseInt(temp) > 298 ? "#E74C3C" : "#3498DB",
   };
 }
 
@@ -42,7 +42,7 @@ export function getExactTime() {
     time > new Date().setHours(0, 0, 0) &&
     time <= new Date().setHours(6, 0, 0)
   ) {
-    return "06:00:00";
+    return "6:00:00";
   } else if (
     time > new Date().setHours(6, 0, 0) &&
     time <= new Date().setHours(12, 0, 0)

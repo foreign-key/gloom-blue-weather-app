@@ -8,19 +8,19 @@
 
 .forecastMain .weather-details {
   position: relative;
-  margin-left: 70px;
+  margin-left: 75px;
   margin-top: -6px;
 }
 .forecastMain .img-weather {
   position: absolute;
-  margin-top: -30px;
-  margin-left: -16px;
+  margin-top: -24px;
+  margin-left: -10px;
 }
 
 .forecastMain h1 {
   text-align: right;
   margin-right: 4px;
-  font-size: 28px;
+  font-size: 30px;
   margin-top: -8px;
 }
 
