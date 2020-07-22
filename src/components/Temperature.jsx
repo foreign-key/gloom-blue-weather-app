@@ -8,13 +8,11 @@ class Temperature extends Component {
     if (this.props !== undefined) {
       const temp = convertTemperature(
         this.props.main.temp,
-        this.props.isCelcius,
-        1
+        this.props.isCelcius
       );
       const feelsLike = convertTemperature(
         this.props.main.feels_like,
-        this.props.isCelcius,
-        1
+        this.props.isCelcius
       );
 
       tempDetails = (

@@ -2,12 +2,12 @@ import runtimeEnv from "@mars/heroku-js-runtime-env";
 
 const env = runtimeEnv();
 
-export function convertTemperature(temp, tempScale, precision = 0) {
+export function convertTemperature(temp, tempScale) {
   temp = temp - 273.15;
   const formula = tempScale ? temp : temp * 1.8 + 32;
   return formula.toLocaleString(navigator.language, {
     minimumFractionDigits: 0,
-    maximumFractionDigits: precision,
+    maximumFractionDigits: 1,
   });
 }
 
