@@ -2,26 +2,23 @@ import runtimeEnv from "@mars/heroku-js-runtime-env";
 
 const env = runtimeEnv();
 
-export function convertTemperature(temp, tempScale) {
-  temp = temp - 273.15;
-  const formula = tempScale ? temp : temp * 1.8 + 32;
+convertTemperature = (temp, tempScale) => {
+  const newTemp = temp - 273.15;
+  const formula = tempScale && newTemp * 1.8 + 32;
   return formula.toLocaleString(navigator.language, {
     minimumFractionDigits: 0,
     maximumFractionDigits: 1,
   });
-}
+};
 
-export function tempScale(isCelcius) {
-  return isCelcius ? env.REACT_APP_CELC : env.REACT_APP_FAHR;
-}
+tempScale = (isCelcius) =>
+  isCelcius ? env.REACT_APP_CELC : env.REACT_APP_FAHR;
 
-export function tempColor(temp) {
-  return {
-    color: parseInt(temp) > 298 ? "#E74C3C" : "#3498DB",
-  };
-}
+tempColor = (temp) => {
+  color: parseInt(temp) > 298 ? "#E74C3C" : "#3498DB";
+};
 
-export function getCurrentDay(date) {
+getCurrentDay = (date) => {
   const days = [
     "Sunday",
     "Monday",
@@ -33,9 +30,9 @@ export function getCurrentDay(date) {
   ];
 
   return days[date.getDay()];
-}
+};
 
-export function getExactTime() {
+getExactTime = () => {
   const time = new Date().getTime();
 
   if (
@@ -61,9 +58,9 @@ export function getExactTime() {
   }
 
   return null;
-}
+};
 
-export function filteredForecast(forecastList) {
+filteredForecast = (forecastList) => {
   return forecastList.map((item) => {
     const date = item.dt_txt.split(" ")[0];
     if (
@@ -74,15 +71,13 @@ export function filteredForecast(forecastList) {
     }
     return false;
   });
-}
+};
 
-export function dateParser(date) {
-  return Date.parse(new Date(date.replace(" ", "T")));
-}
+dateParser = (date) => Date.parse(new Date(date.replace(" ", "T")));
 
-export function getDate() {
+getDate = () => {
   const date = new Date();
   return `${date.getFullYear()}-${
     date.getMonth().toString().length === 1 ? "0" : ""
   }${date.getMonth() + 1}-${date.getDate()}`;
-}
+};

@@ -3,14 +3,10 @@ import "react-app-polyfill/stable";
 import React, { Component } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { WeatherImage } from "./Details";
+import { ActualTemperature } from "./Temperature";
+import { getCurrentDay, getDate } from "../helpers/Helpers";
 import "../styles/Forecast.css";
-import {
-  convertTemperature,
-  getCurrentDay,
-  getDate,
-  tempColor,
-  tempScale,
-} from "../helpers/Helpers";
 
 class Forecast extends Component {
   render() {
@@ -27,24 +23,16 @@ class Forecast extends Component {
                   <hr />
                   <Row>
                     <Col>
-                      <div className="img-weather">
-                        <img
-                          src={`https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
-                          alt="wthr img"
-                        />
-                      </div>
+                      <WeatherImage icon={item.weather[0].icon} />
                       <div className="weather-details">
                         <h5>{item.weather[0].main}</h5>
                       </div>
                     </Col>
                     <Col>
-                      <h1 style={tempColor(item.main.temp)}>
-                        {convertTemperature(
-                          item.main.temp,
-                          this.props.isCelcius
-                        )}
-                        {tempScale(this.props.isCelcius)}
-                      </h1>
+                      <ActualTemperature
+                        temp={item.main.temp}
+                        isCelcius={this.props.isCelcius}
+                      />
                     </Col>
                   </Row>
                   <Row>

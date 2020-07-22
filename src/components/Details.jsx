@@ -8,6 +8,35 @@ import moment from "moment";
 
 import "../styles/Details.css";
 
+export function WeatherImage(props) {
+  return (
+    <div className="img-weather">
+      <img
+        src={`https://openweathermap.org/img/wn/${props.icon}@2x.png`}
+        alt="wthr img"
+      />
+    </div>
+  );
+}
+
+function WeatherExtrasInfo(props) {
+  return (
+    <React.Fragment>
+      <div className="img-weather-extras">
+        <img
+          src={require(`../${props.fileName}.png`)}
+          alt="wthr img"
+          className="img-fluid"
+        />
+      </div>
+      <h6>
+        <span style={{ marginRight: `${props.margin}` }}>{props.label}</span>
+        {props.details}
+      </h6>
+    </React.Fragment>
+  );
+}
+
 class Details extends Component {
   render() {
     const GetCountry = (countries, code) => {
@@ -24,13 +53,8 @@ class Details extends Component {
       const timezone =
         (new Date().getTimezoneOffset() * 60 + props.city.timezone) * 1000;
 
-      const sunrise = moment(
-        new Date(props.city.sunrise * 1000 + timezone)
-      ).format("h:mm:ss A");
-
-      const sunset = moment(
-        new Date(props.city.sunset * 1000 + timezone)
-      ).format("h:mm:ss A");
+      const twilight = (minutes) =>
+        moment(new Date(minutes * 1000 + timezone)).format("h:mm:ss A");
 
       return (
         <div className="resultMain">
@@ -44,12 +68,7 @@ class Details extends Component {
               <Row>
                 <Col>
                   <div className="today-weather-visual">
-                    <div className="img-weather">
-                      <img
-                        src={`https://openweathermap.org/img/wn/${props.data.weather[0].icon}@2x.png`}
-                        alt="wthr img"
-                      />
-                    </div>
+                    <WeatherImage icon={props.data.weather[0].icon} />
                     <Temperature
                       main={props.data.main}
                       isCelcius={props.tempScale}
@@ -62,69 +81,44 @@ class Details extends Component {
               <Row>
                 <Col>
                   <div className="weather-extras">
-                    <div className="img-weather-extras">
-                      <img
-                        src={require("../wind.png")}
-                        alt="wthr img"
-                        className="img-fluid"
-                      />
-                    </div>
-                    <h6>
-                      <span style={{ marginRight: "1rem" }}>Wind Speed</span>
-                      {props.data.wind.speed} m/s
-                    </h6>
+                    <WeatherExtrasInfo
+                      fileName="wind"
+                      margin="1rem"
+                      label="Wind Speed"
+                      details={`${props.data.wind.speed} m/s`}
+                    />
                   </div>
                   <div className="weather-extras">
-                    <div className="img-weather-extras">
-                      <img
-                        src={require("../pressure.png")}
-                        alt="wthr img"
-                        className="img-fluid"
-                      />
-                    </div>
-                    <h6>
-                      <span style={{ marginRight: "2.5rem" }}>Pressure</span>
-                      {props.data.main.pressure} hPa
-                    </h6>
+                    <WeatherExtrasInfo
+                      fileName="pressure"
+                      margin="2.5rem"
+                      label="Pressure"
+                      details={`${props.data.main.pressure} hPa`}
+                    />
                   </div>
                   <div className="weather-extras">
-                    <div className="img-weather-extras">
-                      <img
-                        src={require("../humidity.png")}
-                        alt="wthr img"
-                        className="img-fluid"
-                      />
-                    </div>
-                    <h6>
-                      <span style={{ marginRight: "2.4rem" }}>Humidity</span>
-                      {props.data.main.humidity} %
-                    </h6>
+                    <WeatherExtrasInfo
+                      fileName="humidity"
+                      margin="2.4rem"
+                      label="Humidity"
+                      details={`${props.data.main.humidity} %`}
+                    />
                   </div>
                   <div className="weather-extras">
-                    <div className="img-weather-extras">
-                      <img
-                        src={require("../sunrise.png")}
-                        alt="wthr img"
-                        className="img-fluid"
-                      />
-                    </div>
-                    <h6>
-                      <span style={{ marginRight: "3.1rem" }}>Sunrise</span>
-                      {sunrise}
-                    </h6>
+                    <WeatherExtrasInfo
+                      fileName="sunrise"
+                      margin="3.1rem"
+                      label="Sunrise"
+                      details={twilight(props.city.sunrise)}
+                    />
                   </div>
                   <div className="weather-extras">
-                    <div className="img-weather-extras">
-                      <img
-                        src={require("../sunset.png")}
-                        alt="wthr img"
-                        className="img-fluid"
-                      />
-                    </div>
-                    <h6>
-                      <span style={{ marginRight: "3.4rem" }}>Sunset</span>
-                      {sunset}
-                    </h6>
+                    <WeatherExtrasInfo
+                      fileName="sunset"
+                      margin="3.4rem"
+                      label="Sunset"
+                      details={twilight(props.city.sunset)}
+                    />
                   </div>
                 </Col>
                 <Col />
