@@ -9,12 +9,12 @@ class Temperature extends Component {
       const temp = convertTemperature(
         this.props.main.temp,
         this.props.isCelcius,
-        2
+        1
       );
       const feelsLike = convertTemperature(
         this.props.main.feels_like,
         this.props.isCelcius,
-        2
+        1
       );
 
       tempDetails = (
@@ -26,7 +26,8 @@ class Temperature extends Component {
             </h1>
             <h6>
               Feels like {feelsLike}
-              {tempScale(this.props.isCelcius)}
+              {tempScale(this.props.isCelcius)} with{" "}
+              {this.props.weather.description}
             </h6>
           </div>
         </React.Fragment>

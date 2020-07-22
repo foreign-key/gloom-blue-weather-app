@@ -2,14 +2,14 @@
   background: #154360;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 15px;
+  margin-bottom: 13px;
   padding: 10px;
 }
 
 .forecastMain .weather-details {
   position: relative;
   margin-left: 70px;
-  margin-top: 0px;
+  margin-top: -6px;
 }
 .forecastMain .img-weather {
   position: absolute;
@@ -21,7 +21,7 @@
   text-align: right;
   margin-right: 4px;
   font-size: 28px;
-  margin-top: -4px;
+  margin-top: -8px;
 }
 
 .forecastMain h6 {

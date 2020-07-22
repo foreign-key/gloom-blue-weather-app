@@ -63,12 +63,12 @@ class Weather extends Component {
         .then((data) => {
           this.filterForecast(data);
         })
-        .catch(function (err) {
+        .catch((err) => {
           this.updateDocTitle(null);
           this.setState({
             city: undefined,
             data: undefined,
-            errorMessage: err,
+            errorMessage: err.statusText,
             filteredForecast: [],
             isRequesting: false,
             isPopAlert: true,

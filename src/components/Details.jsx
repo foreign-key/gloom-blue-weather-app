@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import DateTime from "./DateTime";
 import Temperature from "./Temperature";
+import moment from "moment";
 
 import "../styles/Details.css";
 
@@ -20,6 +21,16 @@ class Details extends Component {
 
     const DisplayResult = (props) => {
       let country = GetCountry(props.countries, props.city.country);
+      const timezone =
+        (new Date().getTimezoneOffset() * 60 + props.city.timezone) * 1000;
+
+      const sunrise = moment(
+        new Date(props.city.sunrise * 1000 + timezone)
+      ).format("h:mm:ss A");
+
+      const sunset = moment(
+        new Date(props.city.sunset * 1000 + timezone)
+      ).format("h:mm:ss A");
 
       return (
         <div className="resultMain">
@@ -39,46 +50,96 @@ class Details extends Component {
                         alt="wthr img"
                       />
                     </div>
-                    <div className="weather-details">
-                      <h5>{props.data.weather[0].main}</h5>
-                      <h6>({props.data.weather[0].description})</h6>
-                    </div>
+                    <Temperature
+                      main={props.data.main}
+                      isCelcius={props.tempScale}
+                      weather={props.data.weather[0]}
+                    />
                   </div>
-                </Col>
-                <Col>
-                  <Temperature
-                    main={props.data.main}
-                    isCelcius={props.tempScale}
-                  />
                 </Col>
               </Row>
               <hr />
-
-              <table className="table table-borderless">
-                <tbody>
-                  <tr>
-                    <td className="td-title">Wind Speed</td>
-                    <td className="td-value">{props.data.wind.speed} m/s</td>
-                  </tr>
-                  <tr>
-                    <td className="td-title">Pressure</td>
-                    <td className="td-value">{props.data.main.pressure} hPa</td>
-                  </tr>
-                  <tr>
-                    <td className="td-title">Humidity</td>
-                    <td className="td-value">{props.data.main.humidity} %</td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <hr />
-              <h5>Geo Coordinates</h5>
-              <Button
-                variant="link"
-                onClick={() => this.props.geoClicked(props.city.coord)}
-              >
-                ({props.city.coord.lat}, {props.city.coord.lon})
-              </Button>
+              <Row>
+                <Col>
+                  <div className="weather-extras">
+                    <div className="img-weather-extras">
+                      <img
+                        src={require("../wind.png")}
+                        alt="wthr img"
+                        className="img-fluid"
+                      />
+                    </div>
+                    <h6>
+                      <span style={{ marginRight: "1rem" }}>Wind Speed</span>
+                      {props.data.wind.speed} m/s
+                    </h6>
+                  </div>
+                  <div className="weather-extras">
+                    <div className="img-weather-extras">
+                      <img
+                        src={require("../pressure.png")}
+                        alt="wthr img"
+                        className="img-fluid"
+                      />
+                    </div>
+                    <h6>
+                      <span style={{ marginRight: "2.5rem" }}>Pressure</span>
+                      {props.data.main.pressure} hPa
+                    </h6>
+                  </div>
+                  <div className="weather-extras">
+                    <div className="img-weather-extras">
+                      <img
+                        src={require("../humidity.png")}
+                        alt="wthr img"
+                        className="img-fluid"
+                      />
+                    </div>
+                    <h6>
+                      <span style={{ marginRight: "2.4rem" }}>Humidity</span>
+                      {props.data.main.humidity} %
+                    </h6>
+                  </div>
+                  <div className="weather-extras">
+                    <div className="img-weather-extras">
+                      <img
+                        src={require("../sunrise.png")}
+                        alt="wthr img"
+                        className="img-fluid"
+                      />
+                    </div>
+                    <h6>
+                      <span style={{ marginRight: "2.3rem" }}>SUNRISE</span>
+                      {sunrise}
+                    </h6>
+                  </div>
+                  <div className="weather-extras">
+                    <div className="img-weather-extras">
+                      <img
+                        src={require("../sunset.png")}
+                        alt="wthr img"
+                        className="img-fluid"
+                      />
+                    </div>
+                    <h6>
+                      <span style={{ marginRight: "2.7rem" }}>SUNSET</span>
+                      {sunset}
+                    </h6>
+                  </div>
+                </Col>
+                <Col />
+                <Col>
+                  <div className="coordinates">
+                    <h5>Geo Coordinates</h5>
+                    <Button
+                      variant="link"
+                      onClick={() => this.props.geoClicked(props.city.coord)}
+                    >
+                      ({props.city.coord.lat}, {props.city.coord.lon})
+                    </Button>
+                  </div>
+                </Col>
+              </Row>
             </Col>
           </Row>
         </div>
