@@ -1,10 +1,10 @@
-function setParams({ query }) {
+const setParams = ({ query }) => {
   const searchParams = new URLSearchParams();
   searchParams.set("q", query || "");
   return searchParams.toString();
-}
+};
 
-export function updateURL(query, history) {
+export const updateURL = (query, history) => {
   const url = setParams({ query: query });
   history.push(`?${url}`);
-}
+};
