@@ -2,7 +2,7 @@
 A simple weather app created using React.JS that displays the weather information based on the inputted city name. It consumes data from [OpenWeatherMap](https://openweathermap.org/) and uses `https://datahub.io/core/country-list` to convert country code based on 2 digit codes (ISO 3166-1) into their full name. Map can also be displayed (provided by [react-leaflet](https://react-leaflet.js.org/)) base on the geo coordinates of the city.
 
 ## Live Demo
-[GloomBlue](https://gloomblue.herokuapp.com/) on Heroku
+[GloomBlue](https://gloomblue.netlify.app/) on Netlify
 
 ## Instructions
 
