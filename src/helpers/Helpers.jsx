@@ -1,7 +1,3 @@
-import runtimeEnv from "@mars/heroku-js-runtime-env";
-
-const env = runtimeEnv();
-
 export const convertTemperature = (temp, tempScale) => {
   temp = temp - 273.15;
   const formula = tempScale ? temp : temp * 1.8 + 32;
@@ -12,7 +8,7 @@ export const convertTemperature = (temp, tempScale) => {
 };
 
 export const tempScale = (isCelcius) =>
-  isCelcius ? env.REACT_APP_CELC : env.REACT_APP_FAHR;
+  isCelcius ? process.env.REACT_APP_CELC : process.env.REACT_APP_FAHR;
 
 export const tempColor = (temp) => {
   return { color: parseInt(temp) > 298 ? "#E74C3C" : "#66CCFF" };

@@ -1,7 +1,3 @@
-import runtimeEnv from "@mars/heroku-js-runtime-env";
-
-const env = runtimeEnv();
-
 const sendRequest = async (url = "") => {
   const response = await fetch(url);
 
@@ -20,6 +16,6 @@ export const queryCountries = () => {
 
 export const queryForecast = (queryString) => {
   return sendRequest(
-    `https://api.openweathermap.org/data/2.5/forecast?${queryString}&appid=${env.REACT_APP_OPENWEATHER_API_KEY}`
+    `https://api.openweathermap.org/data/2.5/forecast?${queryString}&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`
   );
 };

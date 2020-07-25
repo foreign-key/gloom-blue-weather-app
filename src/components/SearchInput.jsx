@@ -2,11 +2,8 @@ import React, { Component } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
-import runtimeEnv from "@mars/heroku-js-runtime-env";
 
 import "../styles/SearchInput.css";
-
-const env = runtimeEnv();
 
 class SearchInput extends Component {
   shouldComponentUpdate(nextProps, nextState) {
@@ -49,8 +46,8 @@ class SearchInput extends Component {
           >
             <BootstrapSwitchButton
               checked={true}
-              onlabel={env.REACT_APP_CELC}
-              offlabel={env.REACT_APP_FAHR}
+              onlabel={process.env.REACT_APP_CELC}
+              offlabel={process.env.REACT_APP_FAHR}
               onChange={(event) => this.props.tempChangeHandler(event)}
             />
           </Col>

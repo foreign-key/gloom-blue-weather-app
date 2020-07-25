@@ -13,9 +13,7 @@ import GeoLocation from "./GeoLocation";
 import Loading from "./Loading";
 import Message from "./Message";
 import SearchInput from "./SearchInput";
-import runtimeEnv from "@mars/heroku-js-runtime-env";
 
-const env = runtimeEnv();
 var queryString = null;
 
 class Weather extends Component {
@@ -132,7 +130,7 @@ class Weather extends Component {
   };
 
   updateDocTitle = (location) => {
-    let docTitle = `${env.REACT_APP_NAME} Weather Forecast`;
+    let docTitle = `${process.env.REACT_APP_NAME} Weather Forecast`;
 
     if (location !== null) {
       docTitle = location.concat(` | ${docTitle}`);
