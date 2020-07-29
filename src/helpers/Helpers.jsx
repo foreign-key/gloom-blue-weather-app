@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export const convertTemperature = (temp, tempScale) => {
   temp = temp - 273.15;
   const formula = tempScale ? temp : temp * 1.8 + 32;
@@ -14,19 +16,8 @@ export const tempColor = (temp) => {
   return { color: parseInt(temp) > 298 ? "#E74C3C" : "#66CCFF" };
 };
 
-export const getCurrentDay = (date) => {
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-
-  return days[date.getDay()];
-};
+export const getCurrentDay = (date) =>
+  moment(date, "YYYY-MM-DD HH:mm:ss").format("dddd");
 
 export const getExactTime = () => {
   const time = new Date().getTime();

@@ -19,7 +19,7 @@ class Forecast extends Component {
             if (item !== undefined && item.dt_txt.split(" ")[0] !== getDate()) {
               return (
                 <div className="forecastMain" key={index}>
-                  <h6>{getCurrentDay(new Date(item.dt_txt))}</h6>
+                  <h6>{getCurrentDay(item.dt_txt)}</h6>
                   <hr />
                   <Row>
                     <Col>
