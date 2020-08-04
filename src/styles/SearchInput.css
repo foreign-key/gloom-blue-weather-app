@@ -34,3 +34,10 @@
 .switch .switch-handle {
   border-radius: 20px;
 }
+
+@media only screen and (min-width: 768px) {
+  .switch {
+    right: 0;
+    position: absolute;
+  }
+}
