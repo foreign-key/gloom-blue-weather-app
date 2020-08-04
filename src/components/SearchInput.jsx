@@ -19,7 +19,6 @@ class SearchInput extends Component {
             sm={{ span: 10 }}
             md={{ span: 6 }}
             lg={{ span: 4 }}
-            xl={{ span: 4 }}
           >
             <form
               onSubmit={(event) =>
@@ -40,9 +39,8 @@ class SearchInput extends Component {
           <Col
             xs={{ span: 3 }}
             sm={{ span: 2 }}
-            md={{ span: 2, offset: 4 }}
-            lg={{ span: 2, offset: 6 }}
-            xl={{ span: 1, offset: 7 }}
+            md={{ span: 1, offset: 5 }}
+            lg={{ span: 1, offset: 7 }}
           >
             <BootstrapSwitchButton
               checked={true}
