@@ -14,12 +14,7 @@ class SearchInput extends Component {
     return (
       <div className="searchMain">
         <Row>
-          <Col
-            xs={{ span: 9 }}
-            sm={{ span: 10 }}
-            md={{ span: 6 }}
-            lg={{ span: 4 }}
-          >
+          <Col xs={{ span: 9 }} md={{ span: 6 }} lg={{ span: 4 }}>
             <form
               onSubmit={(event) =>
                 this.props.searchHandler(event, this._inputElement)
@@ -38,9 +33,8 @@ class SearchInput extends Component {
           </Col>
           <Col
             xs={{ span: 3 }}
-            sm={{ span: 2 }}
-            md={{ span: 1, offset: 5 }}
-            lg={{ span: 2, offset: 6 }}
+            md={{ span: 2, offset: 4 }}
+            lg={{ span: 1, offset: 7 }}
           >
             <BootstrapSwitchButton
               checked={true}
