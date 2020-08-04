@@ -63,9 +63,6 @@ export const filteredForecast = (forecastList) => {
 export const dateParser = (date) =>
   Date.parse(new Date(date.replace(" ", "T")));
 
-export const getDate = () => {
-  const date = new Date();
-  return `${date.getFullYear()}-${
-    date.getMonth().toString().length === 1 ? "0" : ""
-  }${date.getMonth() + 1}-${date.getDate()}`;
-};
+export const getDate = () => moment(new Date()).format("YYYY-MM-DD");
+
+export const getCountries = () => require("../countries.json");

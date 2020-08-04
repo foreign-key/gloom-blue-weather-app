@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import { filteredForecast } from "../helpers/Helpers";
-import { queryCountries, queryForecast } from "../helpers/RequestHandlers";
+import { filteredForecast, getCountries } from "../helpers/Helpers";
+import { queryForecast } from "../helpers/RequestHandlers";
 import { updateURL } from "../helpers/RouterHelpers";
 
 import Details from "./Details";
@@ -108,9 +108,8 @@ class Weather extends Component {
   componentDidMount() {
     this.updateDocTitle(null);
 
-    queryCountries().then((data) => {
-      this.setState({ countryList: data });
-    });
+    const countries = getCountries();
+    this.setState({ countryList: countries });
 
     this.refreshPage(true);
 
@@ -181,10 +180,10 @@ class Weather extends Component {
                 />
               )}
               <Row>
-                <Col>
+                <Col md={6} lg={7}>
                   <Details {...this.state} geoClicked={this.geoClickHandler} />
                 </Col>
-                <Col>
+                <Col md={6} lg={5}>
                   <Forecast
                     forecastList={this.state.filteredForecast}
                     isCelcius={this.state.isTempCelcius}

@@ -79,7 +79,7 @@ class Details extends Component {
               </Row>
               <hr />
               <Row>
-                <Col>
+                <Col xs={12} sm={12} md={12} lg={7} xl={8}>
                   <div className="weather-extras">
                     <WeatherExtrasInfo
                       fileName="wind"
@@ -121,8 +121,8 @@ class Details extends Component {
                     />
                   </div>
                 </Col>
-                <Col />
-                <Col>
+                {/* <Col /> */}
+                <Col xs={12} sm={12} md={12} lg={5} xl={4}>
                   <div className="coordinates">
                     <h5>Geo Coordinates</h5>
                     <Button
