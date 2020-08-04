@@ -21,11 +21,8 @@
   color: #3498db;
 }
 .switch {
-  right: 0;
-  display: inline-block;
-  position: absolute;
-  margin-top: 11.5px;
   margin-right: 1rem;
+  margin-top: 11.5px;
   border-radius: 20px;
   -webkit-box-shadow: 0px 0px 20px 0px rgba(59, 59, 59, 1);
   -moz-box-shadow: 0px 0px 20px 0px rgba(59, 59, 59, 1);
@@ -39,5 +36,6 @@
   .switch {
     right: 0;
     position: absolute;
+    margin-right: 1rem;
   }
 }
