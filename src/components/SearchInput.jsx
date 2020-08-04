@@ -40,7 +40,7 @@ class SearchInput extends Component {
             xs={{ span: 3 }}
             sm={{ span: 2 }}
             md={{ span: 1, offset: 5 }}
-            lg={{ span: 1, offset: 7 }}
+            lg={{ span: 2, offset: 6 }}
           >
             <BootstrapSwitchButton
               checked={true}
