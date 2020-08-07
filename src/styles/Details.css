@@ -33,10 +33,10 @@
     font-size: 78px;
   }
 
-  .coordinates {
+  .twilight {
     right: 0;
     position: absolute;
-    margin-right: 14px;
+    margin-right: 30px;
   }
 
   .img-weather {
@@ -48,7 +48,7 @@
   background: #154360;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   color: #b3b6b7;
   padding: 10px;
 }
@@ -77,7 +77,7 @@ h5 {
   overflow: hidden;
   border-radius: 10px !important;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 .img-weather {
   position: absolute;
@@ -121,4 +121,8 @@ h6 {
 .weather-extras h6 {
   margin-top: -34px;
   margin-left: 50px;
+}
+
+.weather-extras-visual {
+  margin-bottom: -10px;
 }

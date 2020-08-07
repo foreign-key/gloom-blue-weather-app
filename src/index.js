@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./styles/index.css";
+import "./styles/scrollbar.css";
 import Weather from "../src/components/Weather";
 
 var destination = document.querySelector("#weatherBody");

@@ -78,62 +78,67 @@ class Details extends Component {
                 </Col>
               </Row>
               <hr />
-              <Row>
-                <Col xs={12} sm={12} md={12} lg={7} xl={8}>
-                  <div className="weather-extras">
-                    <WeatherExtrasInfo
-                      fileName="wind"
-                      margin="1rem"
-                      label="Wind Speed"
-                      details={`${props.data.wind.speed} m/s`}
-                    />
-                  </div>
-                  <div className="weather-extras">
-                    <WeatherExtrasInfo
-                      fileName="pressure"
-                      margin="2.5rem"
-                      label="Pressure"
-                      details={`${props.data.main.pressure} hPa`}
-                    />
-                  </div>
-                  <div className="weather-extras">
-                    <WeatherExtrasInfo
-                      fileName="humidity"
-                      margin="2.4rem"
-                      label="Humidity"
-                      details={`${props.data.main.humidity} %`}
-                    />
-                  </div>
-                  <div className="weather-extras">
-                    <WeatherExtrasInfo
-                      fileName="sunrise"
-                      margin="3.1rem"
-                      label="Sunrise"
-                      details={twilight(props.city.sunrise)}
-                    />
-                  </div>
-                  <div className="weather-extras">
-                    <WeatherExtrasInfo
-                      fileName="sunset"
-                      margin="3.4rem"
-                      label="Sunset"
-                      details={twilight(props.city.sunset)}
-                    />
-                  </div>
-                </Col>
-                {/* <Col /> */}
-                <Col xs={12} sm={12} md={12} lg={5} xl={4}>
-                  <div className="coordinates">
-                    <h5>Geo Coordinates</h5>
-                    <Button
-                      variant="link"
-                      onClick={() => this.props.geoClicked(props.city.coord)}
-                    >
-                      ({props.city.coord.lat}, {props.city.coord.lon})
-                    </Button>
-                  </div>
-                </Col>
-              </Row>
+              <div className="weather-extras-visual">
+                <Row>
+                  {" "}
+                  <Col>
+                    <div className="weather-extras">
+                      <WeatherExtrasInfo
+                        fileName="wind"
+                        margin="1rem"
+                        label="Wind Speed"
+                        details={`${props.data.wind.speed} m/s`}
+                      />
+                    </div>
+                    <div className="weather-extras">
+                      <WeatherExtrasInfo
+                        fileName="pressure"
+                        margin="2.5rem"
+                        label="Pressure"
+                        details={`${props.data.main.pressure} hPa`}
+                      />
+                    </div>
+                    <div className="weather-extras">
+                      <WeatherExtrasInfo
+                        fileName="humidity"
+                        margin="2.4rem"
+                        label="Humidity"
+                        details={`${props.data.main.humidity} %`}
+                      />
+                    </div>
+                  </Col>
+                  <Col>
+                    <div className="twilight">
+                      <div className="weather-extras">
+                        <WeatherExtrasInfo
+                          fileName="sunrise"
+                          margin="3.1rem"
+                          label="Sunrise"
+                          details={twilight(props.city.sunrise)}
+                        />
+                      </div>
+                      <div className="weather-extras">
+                        <WeatherExtrasInfo
+                          fileName="sunset"
+                          margin="3.4rem"
+                          label="Sunset"
+                          details={twilight(props.city.sunset)}
+                        />
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
+              </div>
+              <hr />
+              <div className="coordinates">
+                <h5>Geo Coordinates</h5>
+                <Button
+                  variant="link"
+                  onClick={() => this.props.geoClicked(props.city.coord)}
+                >
+                  ({props.city.coord.lat}, {props.city.coord.lon})
+                </Button>
+              </div>
             </Col>
           </Row>
         </div>

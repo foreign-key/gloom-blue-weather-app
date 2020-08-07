@@ -9,12 +9,8 @@
   background: linear-gradient(to bottom, #044563, #042f4f);
   font-size: 14px;
   color: #5dade2;
-  flex-shrink: 0;
-  float: none;
-  clear: both;
   z-index: 1000 !important;
-  overflow-y: hidden;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .footer h6 {
@@ -26,8 +22,8 @@
   right: 0;
   position: absolute;
   margin-top: -1.75rem;
-  margin-right: 4px;
-  padding-right: 20px;
+  margin-right: 20px;
+  overflow: hidden;
 }
 a.social {
   margin: 0 0.25rem;
